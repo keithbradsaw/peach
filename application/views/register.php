@@ -1,23 +1,73 @@
 <style type="text/css">
-	html {
-  font-size: 14px;
+.register{
+    background: -webkit-linear-gradient(left, #2b5876, #4e4376);
+    margin-top: 3%;
+    padding: 3%;
 }
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+.register-left{
+    text-align: center;
+    color: #fff;
+    margin-top: 4%;
+}
+.register-left input{
+    border: none;
+    border-radius: 1.5rem;
+    padding: 2%;
+    width: 60%;
+    background: #f8f9fa;
+    font-weight: bold;
+    color: #383d41;
+    margin-top: 30%;
+    margin-bottom: 3%;
+    cursor: pointer;
+}
+.register-right{
+    background: #f8f9fa;
+    border-top-left-radius: 10% 50%;
+    border-bottom-left-radius: 10% 50%;
+}
+.register-left img{
+    margin-top: 15%;
+    margin-bottom: 5%;
+    width: 25%;
+    -webkit-animation: mover 2s infinite  alternate;
+    animation: mover 1s infinite  alternate;
+}
+@-webkit-keyframes mover {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-20px); }
+}
+@keyframes mover {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-20px); }
+}
+.register-left p{
+    font-weight: lighter;
+    padding: 12%;
+    margin-top: -9%;
+}
+.register .register-form{
+    padding: 10%;
+    margin-top: 10%;
+}
+.btnRegister{
+    float: right;
+    margin-top: 10%;
+    border: none;
+    border-radius: 1.5rem;
+    padding: 2%;
+    background: #0062cc;
+    color: #fff;
+    font-weight: 600;
+    width: 50%;
+    cursor: pointer;
 }
 
-.container {
-  max-width: 960px;
-}
-
-.pricing-header {
-  max-width: 700px;
-}
-
-.card-deck .card {
-  min-width: 220px;
+.register-heading{
+    text-align: center;
+    margin-top: 8%;
+    margin-bottom: -15%;
+    color: #495057;
 }
 
 </style>
@@ -31,18 +81,11 @@
         <a class="p-2 text-dark" href="#">Support</a>
         <a class="p-2 text-dark" href="#">Pricing</a> -->
       </nav>
-      <a class="btn btn-outline-primary" href="<?php echo base_url('user/login_view'); ?>">Sign In</a>
+      <a class="btn btn-outline-primary" href="<?php echo base_url('user/login_view'); ?>">Log In</a>
     </div>
 <!--End of nav area -->
-<span style="background-color:red;">
-  <div class="container"><!-- container class is used to centered  the body of the browser with some decent width-->
-      <div class="row"><!-- row class is used for grid system in Bootstrap-->
-          <div class="col-md-4 col-md-offset-4"><!--col-md-4 is used to create the no of colums in the grid also use for medimum and large devices-->
-              <div class="login-panel panel panel-success">
-                  <div class="panel-heading">
-                      <h3 class="panel-title">Registration</h3>
-                  </div>
-                  <div class="panel-body">
+
+
  
                   <?php
                   $error_msg=$this->session->flashdata('error_msg');
@@ -51,35 +94,69 @@
                   }
                    ?>
  
-                      <form role="form" method="post" action="<?php echo base_url('user/register_user'); ?>">
-                          <fieldset>
-                              <div class="form-group">
-                                  <input class="form-control" placeholder="Full Name" name="user_full_name" type="text" autofocus>
-                              </div>
- 
-                              <div class="form-group">
-                                  <input class="form-control" placeholder="E-mail" name="user_email_address" type="email" autofocus>
-                              </div>
-                              <div class="form-group">
-                                  <input class="form-control" placeholder="Password" name="user_password" type="password" value="">
-                              </div>
- 
-                              <div class="form-group">
-                                  <input class="form-control" placeholder="Age" name="user_age" type="number" value="">
-                              </div>
- 
-                              <div class="form-group">
-                                  <input class="form-control" placeholder="Mobile Number" name="user_phone_number" type="number" value="">
-                              </div>
- 
-                              <input class="btn btn-lg btn-success btn-block" type="submit" value="Register" name="register" >
- 
-                          </fieldset>
-                      </form>
-                      <center><b>Already registered ?</b> <br></b><a href="<?php echo base_url('user/login_view'); ?>">Login here</a></center><!--for centered text-->
-                  </div>
+<div class="container register">
+  <div class="row">
+    <div class="col-md-3 register-left">
+      <!--   <img src="" alt=""/> -->
+        <h3>GoShopping.ie</h3>
+        <p>Text here</p>
+        <a href="<?php echo base_url('user/login_view'); ?>" >
+        <input type="submit" name="" value="Log In"/><br/>
+        </a>
+    </div>
+          
+  <div class="col-md-9 register-right">
+    <div class="container">
+      <div class="container" id="home">
+        <h3 class="register-heading">Register</h3>
+        <form role="form" method="post" action="<?php echo base_url('user/register_user'); ?>">
+          <div class="row register-form">
+                
+           <div class="col-md-6">
+                
+            <div class="form-group">
+              <input class="form-control" placeholder="Full Name *" name="user_full_name" type="text" autofocus>
+            </div>
+            <div class="form-group">
+              <input class="form-control" placeholder="E-mail *" name="user_email_address" type="email" autofocus>
+            </div>
+            
+            <div class="form-group">
+              <input class="form-control" placeholder="Password *" name="user_password" type="password" value="">
+            </div>           
+            <div class="form-group">
+                <input type="password" class="form-control"  placeholder="Confirm Password *" value="" />
+            </div>
+                    <!--
+                <div class="form-group">
+                    <div class="maxl">
+                        <label class="radio inline"> 
+                            <input type="radio" name="gender" value="male" checked>
+                            <span> Male </span> 
+                        </label>
+                        <label class="radio inline"> 
+                            <input type="radio" name="gender" value="female">
+                            <span>Female </span> 
+                        </label>
+                    </div>
+                </div>
+                    -->
+              </div><!--End of col-md-6-->
+             <div class="col-md-6">
+                <div class="form-group">
+                  <input class="form-control" placeholder="Age *" name="user_age" type="number" value="">
+                </div>
+                 <div class="form-group">
+                  <input class="form-control" minlength="10" maxlength="10" placeholder="Mobile Number *" name="user_phone_number" type="number" value="">
               </div>
-          </div>
-      </div>
-  </div>
-</span>
+
+                   <!--Register Button-->
+                    <input class="btnRegister" type="submit" value="Register" name="register" >
+                    </form>
+                    
+                                    </div>
+                  
+                                </div>
+                            </div>
+                        </div>
+                    </div>
