@@ -38,8 +38,8 @@ if($email_check){
 }
 else{
 
-  $this->session->set_flashdata('error_msg', 'Error occured,Try again.');
-  redirect('user');
+  $this->session->set_flashdata('error_msg', 'Error occured it looks like a n account exists with that email,Try again.');
+  redirect('user/index');
 
 
 }

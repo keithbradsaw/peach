@@ -115,17 +115,17 @@
            <div class="col-md-6">
                 
             <div class="form-group">
-              <input class="form-control" placeholder="Full Name *" name="user_full_name" type="text" autofocus>
+              <input class="form-control" placeholder="Full Name *" name="user_full_name" type="text" autofocus required>
             </div>
             <div class="form-group">
-              <input class="form-control" placeholder="E-mail *" name="user_email_address" type="email" autofocus>
+              <input class="form-control" placeholder="E-mail *" name="user_email_address" type="email" autofocus required>
             </div>
             
             <div class="form-group">
-              <input class="form-control" placeholder="Password *" name="user_password" type="password" value="">
+              <input class="form-control" placeholder="Password *" name="user_password" type="password" value="" required>
             </div>           
             <div class="form-group">
-                <input type="password" class="form-control"  placeholder="Confirm Password *" value="" />
+                <input type="password" class="form-control"  placeholder="Confirm Password *" value="" required/>
             </div>
                     <!--
                 <div class="form-group">
@@ -144,10 +144,10 @@
               </div><!--End of col-md-6-->
              <div class="col-md-6">
                 <div class="form-group">
-                  <input class="form-control" placeholder="Age *" name="user_age" type="number" value="">
+                  <input class="form-control" placeholder="Age *" name="user_age" type="number" value="" required>
                 </div>
                  <div class="form-group">
-                  <input class="form-control" minlength="10" maxlength="10" placeholder="Mobile Number *" name="user_phone_number" type="number" value="">
+                  <input class="form-control" minlength="10" maxlength="10" placeholder="Mobile Number *" name="user_phone_number" type="number" value="" required>
               </div>
 
                    <!--Register Button-->

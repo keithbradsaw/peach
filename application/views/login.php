@@ -3,7 +3,7 @@
 
     <div class="container">
     <div class="row">
-        <div class="col-md-4 col-md-offset-4">
+        <div class="col-md-12">
             <div class="login-panel panel panel-success">
                 <div class="panel-heading">
                     <h3 class="panel-title">Login</h3>
