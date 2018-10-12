@@ -136,9 +136,9 @@ body {
           <div class="sidebar-sticky">
             <ul class="nav flex-column">
               <li class="nav-item">
-                <a class="nav-link active" href="#">
+                <a class="nav-link" href="<?php echo base_url('user/user_profile'); ?>#">
                   <span data-feather="home"></span>
-                  Account Overview <span class="sr-only">(current)</span>
+                  Account Overview
                 </a>
               </li>
               <li class="nav-item">
@@ -148,15 +148,16 @@ body {
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="<?php echo base_url('user'); ?>">
+                <a class="nav-link" href="">
                   <span data-feather="shopping-cart"></span>
                   Delivery Address
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="<?php echo base_url('user/user_profile_payment_details/'); echo $user_id; ?>">
+                <a class="nav-link active" href="<?php echo base_url('user/user_profile_payment_details'); ?>">
                   <span data-feather="credit-card"></span>
-                  Payment Details
+                  Payment Details<span class="sr-only">(current)</span>
+
                 </a>
               </li>
             </ul>
@@ -177,28 +178,35 @@ body {
 
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
           <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-            <h1 class="h2">Account Overview</h1>
-
+            <h1 class="h2">Payment Details</h1>
           </div>
-           <table class="table table-bordered table-striped">
-          <tr>
-            <td>Full Name</td>
-            <td><?php echo $this->session->userdata('user_full_name'); ?></td>
-          </tr>
-          <tr>
-            <td>Email Address</td>
-            <td><?php echo $this->session->userdata('user_email_address');  ?></td>
-          </tr>
-          <tr>
-            <td>Age</td>
-            <td><?php echo $this->session->userdata('user_age');  ?></td>
-          </tr>
-          <tr>
-            <td>Mobile Number</td>
-            <td><?php echo $this->session->userdata('user_phone_number');  ?></td>
-          </tr>
-
-      </table>
+          <!--Payment DetailsCard and Link to the Store Card -->
+  <div class="row">
+            <div class="col-sm-6">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title text-center">Current Payment Details</h4>
+                  <div class="card-header">
+                  <div>Name On Card<p class="card-text"><?php echo $this->session->userdata('card_name');  ?></p></div>
+                  <div>Card Number<p class="card-text"><?php echo $this->session->userdata('card_number');  ?></p></div>
+                  <div>Expiry Date<p class="card-text"><?php echo $this->session->userdata('card_exp_date');  ?></p></div>
+                    </div>
+                  
+                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+              </div>
+            </div>
+              <div class="col-sm-6">
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title">Special title treatment</h5>
+                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                  </div>
+                </div>
+              </div>
+    </div>
+           <?php echo $this->session->userdata('card_number');  ?>
         </main>
       </div>
     </div>

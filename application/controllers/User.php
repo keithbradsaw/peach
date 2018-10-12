@@ -17,7 +17,8 @@ public function __construct(){
 		
 
 	}
-	public function register_user(){
+
+public function register_user(){
 
       $user=array(
       'user_full_name'=>$this->input->post('user_full_name'),
@@ -32,8 +33,9 @@ $email_check=$this->user_model->email_check($user['user_email_address']);
 
 if($email_check){
   $this->user_model->register_user($user);
-  $this->session->set_flashdata('success_msg', 'Registered successfully.Now login to your account.');
+  $this->session->set_flashdata('success_msg', 'Registered successfully.Now Login!');
   redirect('user/login_view');
+  
 
 }
 else{
@@ -45,6 +47,7 @@ else{
 }
 
 }
+
 public function login_view(){
  
 
@@ -53,6 +56,7 @@ public function login_view(){
     $this->load->view('templates/footer');
 }
 
+//Standared login section
 function login_user(){
   $user_login=array(
  
@@ -70,14 +74,18 @@ function login_user(){
         $this->session->set_userdata('user_email_address',$data['user_email_address']);
         $this->session->set_userdata('user_phone_number',$data['user_phone_number']);
  
-        $this->load->view('user_profile.php');
+         $this->load->view('templates/header');
+        $this->load->view('user_address.php');
+        $this->load->view('templates/footer');
+
+        //$this->load->view('user_profile.php');
  
       }
       else{
         $this->session->set_flashdata('error_msg', 'Error occured,Try again.');
-            $this->load->view('templates/header');
-    $this->load->view("login.php");
-    $this->load->view('templates/footer');
+        $this->load->view('templates/header');
+        $this->load->view("login.php");
+        $this->load->view('templates/footer');
    
  
       }
@@ -85,13 +93,67 @@ function login_user(){
  
 }
 
+public function address_view(){
+ 
+    $this->load->view('templates/header');
+    $this->load->view("user_address.php");
+    $this->load->view('templates/footer');
+}
 
+function user_address(){
+$user_address=array(
+  'user_id'=>$this->input->post('user_id'),
+  'street'=>$this->input->post('street'),
+  'county'=>$this->input->post('county'),
+  'eircode'=>$this->input->post('eircode'),
+  'country'=>$this->input->post('country')
+ 
+    );
+print_r($user_address);
+$this->user_model->add_address($user_address);
+
+redirect('user/payment_view');
+}
+
+public function payment_view(){
+ 
+    $this->load->view('templates/header');
+    $this->load->view("user_payment.php");
+    $this->load->view('templates/footer');
+}
+
+public function user_payment(){
+$user_payment=array(
+  'user_id'=>$this->input->post('user_id'),
+  'card_name'=>$this->input->post('card_name'),
+  'card_number'=>$this->input->post('card_number'),
+  'card_exp_date'=>$this->input->post('card_exp_date'),
+  'card_cvv'=>$this->input->post('card_cvv')
+
+    );
+print_r($user_payment);
+$this->user_model->add_payment_details($user_payment);
+redirect('user/user_profile');
+}
+//Last page to load after registraton steps are done
 function user_profile(){
     $this->load->view("user_profile.php");
     $this->load->view('templates/footer');
 
- 
 }
+
+public function user_profile_payment_details(){
+ $id= $this->uri->segment(3);
+ $data=$this->user_model->get_payment_details($id);
+ 
+$this->session->set_userdata('card_number',$data['card_number']);
+$this->session->set_userdata('card_name',$data['card_name']);
+$this->session->set_userdata('card_exp_date',$data['card_exp_date']);
+// Load the view with the data
+      $this->load->view("user_profile_payment_details.php",$data);
+    $this->load->view('templates/footer');
+}
+
 public function user_logout(){
  
   $this->session->sess_destroy();
