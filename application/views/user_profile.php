@@ -148,7 +148,7 @@ body {
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="<?php echo base_url('user'); ?>">
+                <a class="nav-link" href="<?php echo base_url('user/user_profile_address/'); echo $user_id;  ?>">
                   <span data-feather="shopping-cart"></span>
                   Delivery Address
                 </a>

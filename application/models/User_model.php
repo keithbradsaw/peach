@@ -32,7 +32,20 @@ public function login_user($email,$pass){
 public function add_address($user_address){
     $this->db->insert('user_address', $user_address);
 }
- //Inserts the current users payment details
+
+public function get_address($id){
+   $this->db->select('*');
+  $this->db->from('user_address');
+  $this->db->where('user_id',$id);
+    $query=$this->db->get();
+    return $query->row_array();
+}
+public function update_Address($id, $addressDetails){
+       $this->db->where('user_id', $id);
+        $this->db->update('user_address', $addressDetails);
+}
+
+//Inserts the current users payment details
 public function add_payment_details($user_payment){
     $this->db->insert('user_payment_details', $user_payment);
   }
@@ -52,13 +65,31 @@ public function email_check($email){
 
 }
 
+//Function to check if address exists(Used for if statement on LogIn)
+public function check_id($addr_id){
+  $this->db->select('*');
+  $this->db->from('user_address');
+  $this->db->where('user_id',$addr_id);
+  $query=$this->db->get();
+  if($query->num_rows()>0){
+    return false;
+  }else{
+    return true;
+  }
+}
+
 public function get_payment_details($id){
-  // Method chaining supported in PHP 5
+
   $this->db->select('*');
   $this->db->from('user_payment_details');
   $this->db->where('user_id',$id);
     $query=$this->db->get();
     return $query->row_array();
+}
+
+public function update_PaymentDetails($id, $paymentDetails){
+       $this->db->where('user_id', $id);
+        $this->db->update('user_payment_details', $paymentDetails);
 }
 
  }
