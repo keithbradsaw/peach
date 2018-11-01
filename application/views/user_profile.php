@@ -15,6 +15,8 @@ if(!$user_id){
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    
     <title>GoShopping.ie</title>
   <style type="text/css">
 body {
@@ -136,13 +138,13 @@ body {
           <div class="sidebar-sticky">
             <ul class="nav flex-column">
               <li class="nav-item">
-                <a class="nav-link active" href="#">
+                <a class="nav-link active" href="<?php echo base_url('user/user_profile'); ?>">
                   <span data-feather="home"></span>
                   Account Overview <span class="sr-only">(current)</span>
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="<?php echo base_url('user/user_profile_orders/');echo $user_id;  ?>">
                   <span data-feather="file"></span>
                   Past Orders
                 </a>
@@ -166,7 +168,7 @@ body {
             </h6>
             <ul class="nav flex-column mb-2">
               <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="<?php echo base_url('shop/shop_index'); ?>">
                   <span data-feather="shopping-bag"></span>
                   Start Shopping
                 </a>
@@ -195,7 +197,7 @@ body {
           </tr>
           <tr>
             <td>Mobile Number</td>
-            <td><?php echo $this->session->userdata('user_phone_number');  ?></td>
+            <td>+353<?php echo $this->session->userdata('user_phone_number');  ?></td>
           </tr>
 
       </table>

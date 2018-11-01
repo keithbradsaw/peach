@@ -136,7 +136,7 @@ body {
           <div class="sidebar-sticky">
             <ul class="nav flex-column">
               <li class="nav-item">
-                <a class="nav-link" href="<?php echo base_url('user/user_profile'); ?>#">
+                <a class="nav-link" href="<?php echo base_url('user/user_profile'); ?>">
                   <span data-feather="home"></span>
                   Account Overview
                 </a>
@@ -148,13 +148,13 @@ body {
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="<?php echo base_url('user/user_profile_address'); echo $user_id;  ?>">
+                <a class="nav-link active" href="<?php echo base_url('user/user_profile_address/'); echo $user_id;  ?>">
                   <span data-feather="shopping-cart"></span>
                   Delivery Address
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" href="<?php echo base_url('user/user_profile_payment_details'); echo $user_id;  ?>">
+                <a class="nav-link" href="<?php echo base_url('user/user_profile_payment_details/'); echo $user_id;  ?>">
                   <span data-feather="credit-card"></span>
                   Payment Details<span class="sr-only">(current)</span>
 
@@ -167,7 +167,7 @@ body {
             </h6>
             <ul class="nav flex-column mb-2">
               <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="<?php echo base_url('shop/shop_index'); ?>">
                   <span data-feather="shopping-bag"></span>
                   Start Shopping
                 </a>

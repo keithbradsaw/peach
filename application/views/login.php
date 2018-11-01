@@ -30,7 +30,7 @@ header{float: left; width:100%}
 
 
 .banner-sec .card{
-  margin-bottom:20px;
+  
   position: relative;
         display: -ms-flexbox;
         display: flex;

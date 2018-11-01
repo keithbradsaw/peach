@@ -42,15 +42,11 @@ else{
 
   $this->session->set_flashdata('error_msg', 'Error occured it looks like a n account exists with that email,Try again.');
   redirect('user/index');
-
-
 }
 
 }
 
 public function login_view(){
- 
-
     $this->load->view('templates/header');
     $this->load->view("login.php");
     $this->load->view('templates/footer');
@@ -89,8 +85,6 @@ public function login_user(){
         $this->session->set_userdata('user_email_address',$data['user_email_address']);
         $this->session->set_userdata('user_phone_number',$data['user_phone_number']);
          $this->load->view('user_profile.php');
-           
-
                 }
       }
       else{
@@ -98,15 +92,10 @@ public function login_user(){
         $this->load->view('templates/header');
         $this->load->view("login.php");
         $this->load->view('templates/footer');
-   
- 
       }
- 
- 
 }
 
 public function address_view(){
- 
     $this->load->view('templates/header');
     $this->load->view("user_address.php");
     $this->load->view('templates/footer');
@@ -197,6 +186,10 @@ $id = ($this->input->post('user_id'));
 $this->user_model->update_PaymentDetails($id, $paymentDetails);
 redirect('user/user_profile');
 
+}
+public function user_profile_orders(){
+
+  $this->load->view("user_profile_orders.php");
 }
 public function user_logout(){
  
