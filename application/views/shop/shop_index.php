@@ -47,19 +47,42 @@ padding: 50px;
 .card-img-top h5{
   color: #fff;
 }
+.feather {
+  width: 20px;
+  height: 20px;
+
+}
   </style>
   <body>
     <header>
 
-      <div class="navbar navbar-dark bg-dark shadow-sm">
-        <div class="container d-flex justify-content-between">
-          <a href="#" class="navbar-brand d-flex align-items-center">
-            
-            <strong>GoShopping</strong>
-          </a>
-
-        </div>
-      </div>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+  <a class="navbar-brand" href="#">GoShopping</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarText">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Store <span class="sr-only">(current)</span></a>
+      </li>
+         <li class="nav-item">
+        <a class="nav-link" href="<?php echo base_url('user/user_profile'); ?>">Account</a>
+      </li>
+<!--       <li class="nav-item">
+        <a class="nav-link" href="#">Features</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Pricing</a>
+      </li> -->
+    </ul>
+    <span class="navbar-text">
+ 
+      <a href="#" id="cart"><span data-feather="shopping-cart"></span>3</a>
+  
+    </span>
+  </div>
+</nav>
     </header>
 
     <main role="main">
@@ -210,19 +233,20 @@ padding: 50px;
                 </div>
               </div>
             </div><!--End ofcol4-->
-            <div class="col-md-4">
+                        <div class="col-md-4">
               <div class="card mb-4 shadow-sm">
                 <span class="card-img-top">
-                     <h5 class="flex-d text-center">Frozen Goods</h5>
+                     <h5 class="flex-d text-center">Birds Eye Steam Fresh Broccoli Green Beans And Sweetcorn </h5>
                 </span>
                 <div class="card-body">
                   <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
+                    <a href="<?php echo base_url('shop/Get_product_by_id/6/1'); ?>">
                       <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                      <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                      </a>
                     </div>
-                   
+      
                   </div>
                 </div>
               </div>
@@ -262,13 +286,9 @@ padding: 50px;
       </div>
     </footer>
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
-    <script src="../../assets/js/vendor/popper.min.js"></script>
-    <script src="../../dist/js/bootstrap.min.js"></script>
-    <script src="../../assets/js/vendor/holder.min.js"></script>
+     <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
+    <script>
+      feather.replace()
+    </script>
   </body>
 </html>

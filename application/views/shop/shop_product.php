@@ -28,19 +28,38 @@ h1 a {
 .suggested{
 	padding-top:160px; 
 }
+
+.thumbnail{
+    height:200px;
+    width:100%;
+}
 </style>
-<header>
+<?php $user_id=$this->session->userdata('user_id');?>
+    <header>
 
-      <div class="navbar navbar-dark bg-dark shadow-sm">
-        <div class="container d-flex justify-content-between">
-          <a href="<?php echo base_url('shop/shop_index'); ?>" class="navbar-brand d-flex align-items-center">
-            
-            <strong>GoShopping</strong>
-          </a>
-
-        </div>
-      </div>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+  <a class="navbar-brand" href="#">GoShopping</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarText">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Store <span class="sr-only">(current)</span></a>
+      </li>
+         <li class="nav-item">
+        <a class="nav-link" href="<?php echo base_url('user/user_profile'); ?>">Account</a>
+      </li>
+    </ul>
+    <span class="navbar-text">
+ 
+      <a href="<?php echo base_url('shop/shop_cart'); ?>" id="cart"><span data-feather="shopping-cart"></span>3</a>
+  
+    </span>
+  </div>
+</nav>
     </header>
+
 <!--- Product Name-->
 <div class="container-fluid padding">
 <div class="row text-center">
@@ -57,17 +76,24 @@ h1 a {
                 <div class="card-img-top">
                      <img src="<?php echo base_url('../../assets/images/').$productinfo['product_image']; ?> "/>
                 </div>
-                <div class="card-body">
-                <span>Current Price<h5>&euro; <?php echo $productinfo['product_price'] ?></h5><button type="button" class="btn btn-sm btn-outline-success">Add to cart</button></span>
-                
 
-                </div>
               </div>
 	</div>
 	<hr>
 	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 text-left">
 	<h1 class="display-4"><?php echo $productinfo['product_name'] ?></h1>
 	<a href="#" class="badge badge-info"><?php echo $productinfo['product_category_name'] ?></a>
+	    <div class="card-body">
+            <span>Current Price
+            <h5>&euro;<span id="price" value="<?php echo $productinfo['product_price'] ?>"><?php echo $productinfo['product_price'] ?></span>0
+            </h5>
+            	<input id="qty" style="width:40px;" type="number" value="1" min="1">
+         <button id="addtocart" type="button" class="btn btn-sm btn-outline-success add_to_cart" data-pid="<?php echo $productinfo['product_id'] ?>" data-uid="<?php echo $user_id ?>"
+          			onclick="addtocart();">
+         Add to cart</button>
+
+            </span>
+        </div>
 <hr>
 <div class="container ">
     <div class="panel-group" id="productInfo">
@@ -125,10 +151,13 @@ h1 a {
 		<div class="col-md-4 col-sm-6">
 			              <div class="card ">
                 <div class="card-img-top">
-                     <?php echo $related['1']['product_name'] ?>
+                      <img class="thumbnail" src="<?php echo base_url('../../assets/images/').$productinfo['product_image']; ?>" />
+
                 </div>
                 <div class="card-body">
-                <span>Current Price<h5>&euro; </h5><button type="button" class="btn btn-sm btn-outline-secondary">View</button></span>
+                <span><?php echo $related['1']['product_name'] ?>
+                </span>
+                <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
                 
 
                 </div>
@@ -152,7 +181,7 @@ h1 a {
                      
                 </div>
                 <div class="card-body">
-                <span>Current Price<h5>&euro; <?php echo $productinfo['product_price'] ?></h5><button type="button" class="btn btn-sm btn-outline-secondary">View</button></span>
+                <span>Current Price<h5 id="price">&euro; <?php echo $productinfo['product_price'] ?></h5><button type="button" class="btn btn-sm btn-outline-secondary">View</button></span>
                 
 
                 </div>
@@ -160,11 +189,38 @@ h1 a {
 		</div>
 	</div>
 	</div><!--End of suggested -->
-
-				<?php
-
-				 // foreach ($related['1'] as $name) {
-					// echo $name;
-				 ?>
     </div>
 	</div>
+<script type="text/javascript">
+
+	function addtocart(){
+			var cartbtn = document.querySelector('#addtocart');
+			var user_id = cartbtn.dataset.uid;
+			var product_id = cartbtn.dataset.pid;
+			var price = document.getElementById("price").textContent;
+			var qty = $('#qty').val();
+			var total_price = qty*price;
+			//alert(price+ " "+qty + " "+total_price+ "product_id:"+product_id+"user_id"+user_id);
+			
+			var dataString = 
+			{ user_id  : user_id , product_id : product_id,total_price : total_price, qty : qty, price : price};
+
+			
+
+			$.ajax({
+				        url : "<?php echo base_url('shop/addto_shop_cart') ?>",
+				        type : "POST",
+						data: dataString,
+						success: function(result){
+							console.log(result);
+				  		window.location.href="<?php  echo site_url('shop/addto_shop_cart');?>";
+
+						} ,error: function(xhr, status, error) {
+							alert(status);
+						},
+					});
+		}
+				
+
+
+</script>
