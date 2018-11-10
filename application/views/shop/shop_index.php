@@ -64,21 +64,15 @@ padding: 50px;
   <div class="collapse navbar-collapse" id="navbarText">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Store <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="<?php echo base_url('shop/shop_index'); ?>">Store <span class="sr-only">(current)</span></a>
       </li>
          <li class="nav-item">
         <a class="nav-link" href="<?php echo base_url('user/user_profile'); ?>">Account</a>
       </li>
-<!--       <li class="nav-item">
-        <a class="nav-link" href="#">Features</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Pricing</a>
-      </li> -->
     </ul>
     <span class="navbar-text">
  
-      <a href="#" id="cart"><span data-feather="shopping-cart"></span>3</a>
+      <a href="<?php echo base_url('shop/shop_cart'); ?>" id="cart"><span data-feather="shopping-cart"></span><?php echo $this->session->userdata('cart_quantity') ?></a>
   
     </span>
   </div>
@@ -112,11 +106,9 @@ padding: 50px;
                   <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
-
-                    <a href="">
+                    <a href="<?php echo base_url('shop/shop_category_items/'); ?>2">
                       <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
                       </a>
-                      <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
                     </div>
                     
                   </div>
@@ -132,8 +124,9 @@ padding: 50px;
                   <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
+                    <a href="<?php echo base_url('shop/shop_category_items/'); ?>1">
                       <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                      <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                      </a>
                     </div>
                     <!-- <small class="text-muted">9 mins</small> -->
                   </div>
@@ -149,8 +142,9 @@ padding: 50px;
                   <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
+                    <a href="<?php echo base_url('shop/shop_category_items/'); ?>3">
                       <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                      <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                      </a>
                     </div>
                     
                   </div>
@@ -166,9 +160,10 @@ padding: 50px;
                 <div class="card-body">
                   <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                   <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group">
+                                        <div class="btn-group">
+                    <a href="<?php echo base_url('shop/shop_category_items/'); ?>4">
                       <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                      <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                      </a>
                     </div>
                     
                   </div>

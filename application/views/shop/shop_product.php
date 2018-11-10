@@ -35,7 +35,7 @@ h1 a {
 }
 </style>
 <?php $user_id=$this->session->userdata('user_id');?>
-    <header>
+ <header>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
   <a class="navbar-brand" href="#">GoShopping</a>
@@ -45,7 +45,7 @@ h1 a {
   <div class="collapse navbar-collapse" id="navbarText">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Store <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="<?php echo base_url('shop/shop_index'); ?>">Store <span class="sr-only">(current)</span></a>
       </li>
          <li class="nav-item">
         <a class="nav-link" href="<?php echo base_url('user/user_profile'); ?>">Account</a>
@@ -53,13 +53,12 @@ h1 a {
     </ul>
     <span class="navbar-text">
  
-      <a href="<?php echo base_url('shop/shop_cart'); ?>" id="cart"><span data-feather="shopping-cart"></span>3</a>
+      <a href="<?php echo base_url('shop/shop_cart'); ?>" id="cart"><span data-feather="shopping-cart"></span><?php echo $this->session->userdata('cart_quantity') ?></a>
   
     </span>
   </div>
 </nav>
     </header>
-
 <!--- Product Name-->
 <div class="container-fluid padding">
 <div class="row text-center">
@@ -151,8 +150,8 @@ h1 a {
 		<div class="col-md-4 col-sm-6">
 			              <div class="card ">
                 <div class="card-img-top">
-                      <img class="thumbnail" src="<?php echo base_url('../../assets/images/').$productinfo['product_image']; ?>" />
-
+                     <!--  <img class="thumbnail" src="<?php echo base_url('../../assets/images/').$productinfo['product_image']; ?>" />
+ -->
                 </div>
                 <div class="card-body">
                 <span><?php echo $related['1']['product_name'] ?>
@@ -202,18 +201,23 @@ h1 a {
 			var total_price = qty*price;
 			//alert(price+ " "+qty + " "+total_price+ "product_id:"+product_id+"user_id"+user_id);
 			
-			var dataString = 
-			{ user_id  : user_id , product_id : product_id,total_price : total_price, qty : qty, price : price};
+			var dataString = { 
+			user_id  : user_id,
+			 product_id : product_id,
+			 total_price : total_price, 
+			 qty : qty,
+			  price : price
+			};
 
 			
 
 			$.ajax({
 				        url : "<?php echo base_url('shop/addto_shop_cart') ?>",
 				        type : "POST",
-						data: dataString,
+						data: {"cart_item": dataString},
 						success: function(result){
-							console.log(result);
-				  		window.location.href="<?php  echo site_url('shop/addto_shop_cart');?>";
+						//alert(result);
+				  	//window.location.href="<?php echo site_url('shop/addto_shop_cart');?>";
 
 						} ,error: function(xhr, status, error) {
 							alert(status);
@@ -224,3 +228,7 @@ h1 a {
 
 
 </script>
+     <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
+    <script>
+      feather.replace()
+    </script>
