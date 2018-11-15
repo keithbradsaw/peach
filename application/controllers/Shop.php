@@ -11,6 +11,7 @@ public function __construct(){
  
 }
 	public function shop_index(){
+
 		$this->load->view('templates/header');
     $this->load->view('shop/shop_index');
     $this->load->view('templates/footer');
@@ -19,6 +20,8 @@ public function __construct(){
 	}
 
   public function shop_product(){
+
+
     $this->load->view('templates/header');
     $this->load->view('shop/shop_product');
     $this->load->view('templates/footer');
@@ -68,14 +71,40 @@ public function __construct(){
 
   }
 
-  public function shop_cart(){
-    $this->load->view('templates/header');
-    $this->load->view('shop/shop_cart');
-    $this->load->view('templates/footer');
+  public function shop_cart($user_id){
+    $user_id = $this->uri->segment(3);
+$cartDetails=$this->shop_model->retrieve_amount_from_cart($user_id);
+$main=array();
+//print_r($productDetails);
+  // foreach ($cartDetails as $cartInf) {
+  //     echo "ProductID: ".$cartInf['product_id']. "Quantity: ".$cartInf['quantity'];
+  //   }
+
+
+  foreach ($cartDetails as $cartInf) {
+$productDetails=$this->shop_model->display_cart_products($cartInf['product_id']);
+  foreach ($productDetails as $details) {
+
+    $myarr=array(
+     "cart_id" => $cartInf['cart_id'],
+     "product_name" => $details['product_name'],
+     "product_price" => $details['product_price'],
+     "product_quantity"=>$cartInf['quantity'],
+     "product_image" => $details['product_image']
+);
+     
+   }
+   array_push($main, $myarr);
+    }
+
+$data['productList'] = $main;
+  $this->load->view('templates/header');
+   $this->load->view('shop/shop_cart', $data);
+   $this->load->view('templates/footer');
   }
 
+//Add to cart button gets clicked
    public function addto_shop_cart(){
-    //Product information is stored in cart table
   $item= $this->input->post('cart_item');
   $product=array(
 'user_id'=> $item['user_id'],
@@ -84,47 +113,25 @@ public function __construct(){
 'status'=>'Pending'
     );
   $user_id = $item['user_id'];
-//$this->shop_model->input_product_to_cart($product);
-
-
+$this->shop_model->input_product_to_cart($product);
 //Then select products from the cart table and set as session items
-$retrieved=$this->shop_model->retrieve_products_from_cart($user_id);
-  //$this->session->set_userdata($product_id);
+$retrieved=$this->shop_model->retrieve_amount_from_cart($user_id);
+$i = 0;
+foreach ($retrieved as $item) {
+    $i++;
+    $item[number];
+    //Displays the amount of products in a cart
+ //$this->session->set_userdata('cart_count',$i);
+}
 
- $this->session->set_userdata('quantity',$retrieved);
+  }
+  //Delete Item From Cart
+public function deleteFromCart($cart_id, $user_id){
+$cart_id=$this->uri->segment(3);
+$user_id=$this->uri->segment(4);
+$this->shop_model->deleteFromCart($cart_id);
+redirect('shop/shop_cart/'.$user_id);
 
-        // $this->session->set_userdata('user_id',$data['user_id']);
-        // $this->session->set_userdata('user_full_name',$data['user_full_name']);
-        // $this->session->set_userdata('user_age',$data['user_age']);
-        // $this->session->set_userdata('user_email_address',$data['user_email_address']);
-        // $this->session->set_userdata('user_phone_number',$data['user_phone_number']);
-        // $addr_id = $data['user_id'];
-    // $uid = $this->input->post('user_id');
-    // $pid = $this->input->post('product_id');
-    // $price = $this->input->post('price');
-    // $qty = $this->input->post('qty');
-    // $totalp = $this->input->post('total_price');
-
-    // if(!empty($uid)) 
-    // {
-    //   //print_r($_POST);
-    //     $cart_quantity=1;
-    //     $product_cart=$this->shop_model->Get_product_by_id($pid);
-    //     $this->session->set_userdata('product_name',$product_cart['product_name']);
-    //     $this->session->set_userdata('product_ni_i',$product_cart['product_ni_i']);
-    //     $this->session->set_userdata('product_image',$product_cart['product_image']);
-    //     $this->session->set_userdata('price',$price);
-    //     $this->session->set_userdata('qty',$qty);
-    //     $this->session->set_userdata('cart_quantity', $cart_quantity);
-
-    //    // print_r($product_cart);
-    // }
-  
-
-
-      // $this->load->view('templates/header');
-      // $this->load->view('shop/shop_cart');
-      // $this->load->view('templates/footer');
 }
 
 }

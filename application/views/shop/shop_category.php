@@ -16,7 +16,7 @@
     </ul>
     <span class="navbar-text">
  
-      <a href="<?php echo base_url('shop/shop_cart'); ?>" id="cart"><span data-feather="shopping-cart"></span><?php echo $this->session->userdata('cart_quantity') ?></a>
+      <a href="<?php echo base_url('shop/shop_cart/').$this->session->userdata('user_id')  ?>" id="cart"><span data-feather="shopping-cart"></span><?php echo $this->session->userdata('cart_count') ?></a>
   
     </span>
   </div>

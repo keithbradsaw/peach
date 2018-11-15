@@ -17,49 +17,62 @@
     </ul>
     <span class="navbar-text">
  
-      <a href="<?php echo base_url('shop/shop_cart'); ?>" id="cart"><span data-feather="shopping-cart"></span><?php echo $this->session->userdata('cart_quantity') ?></a>
-  
+      <a href="<?php echo base_url('shop/shop_cart/').$this->session->userdata('user_id')  ?>" id="cart"><span data-feather="shopping-cart"></span><?php echo $this->session->userdata('cart_count') ?></a>
     </span>
   </div>
 </nav>
     </header>
+<?php
+$user_id=$this->session->userdata('user_id');
 
+if(!$user_id){
+
+  redirect('user/login_view');
+}
+
+ ?>
    <div class="card shopping-cart">
-
+      <br>
+   <h3 class="text-center">Shopping Cart</h3>
+   <br>
+   <br>
             <div class="card-body">
                     <!-- PRODUCT -->
-                
+                <?php 
+                  $i=0;
+                foreach($productList as $products) {
+                    
+                ?>
                     <div class="row">
+                   
                         <div class="col-12 col-sm-12 col-md-2 text-center">
-                                <img class="img-responsive" src="<?php echo base_url('../../assets/images/').$this->session->userdata('product_image') ?>" alt="Product Image" width="120" height="80">
+                                <img class="img-responsive" src="<?php echo base_url('../../assets/images/').$products['product_image'] ?>" alt="Product Image" width="120" height="80">
                         </div>
+
                         <div class="col-12 text-sm-center col-sm-12 text-md-left col-md-6">
-                            <h4 class="product-name"><strong><?php echo $this->session->userdata('product_name'); ?></strong></h4>
-                            <h4>
-                                <small><?php echo $this->session->userdata('product_ni_i') ?></small>
-                            </h4>
+                            <h5 class="product-name"><strong><?php echo $products['product_name']; ?></strong></h5>
                         </div>
                         <div class="col-12 col-sm-12 text-sm-center col-md-4 text-md-right row">
                             <div class="col-3 col-sm-3 col-md-6 text-md-right" style="padding-top: 5px">
-                                <h6><strong>EUR <span id="price"><?php echo $this->session->userdata('price') ?>0</span> <span class="text-muted">x</span></strong></h6>
+                                <h6><strong>€ <span id="price"><?php echo $products['product_price']; ?></span></strong></h6>
                             </div>
                             <div class="col-4 col-sm-4 col-md-4">
                                 <div class="quantity">
-                                  
-                                    <input id="qty" onChange="changeOnP()" type="number" step="1" max="99" min="1" value="<?php echo $this->session->userdata('qty') ?>" title="Qty" class="qty"
-                                           size="4">
-                                    
+                          <input id="qty" type="number" step="1" max="99" min="1" value="<?php echo $products['product_quantity']; ?>"  title="Qty" class="qty" size="4">
                                 </div>
                             </div>
                             <div class="col-2 col-sm-2 col-md-2 text-right">
-                                <button type="button" class="btn btn-outline-danger btn-xs">
-                                    <i class="fa fa-trash" aria-hidden="true"></i>
+                            <a href="<?php echo base_url('shop/deleteFromCart/').$products['cart_id']."/".$this->session->userdata('user_id') ?>">
+                                <button  type="button" class="btn btn-outline-danger btn-sm deletebtn">
+                                   <span>X</span>
                                 </button>
-                            </div>
+                                </a>
+                                    </div>
                         </div>
-                    </div>
+                    </div><!--End Of row-->
                     <hr>
                     <!-- END PRODUCT -->
+<?php                     $i++; } ?>
 
    <!--              <div class="float-right">
                     <a href="" class="btn btn-outline-secondary pull-right">
@@ -71,27 +84,16 @@
                 <div class="float-right" style="margin: 10px">
                     <a href="" class="btn btn-success pull-right">Checkout</a>
                     <div class="float-right" style="margin: 5px">
-                        Total price: <b id="total_price">€<?php echo $this->session->userdata('price') ?>0</b>
-                      <?php   $test =$this->session->all_userdata();
-                      print_r($test);
-                                                        ?>
+                        Total price: <b id="total_price">€0</b>
                     </div>
                 </div>
             </div>
         </div>
-<script type="text/javascript">
-
-    function changeOnP(){
-            var price = document.getElementById("price").textContent;
-            var qty = $('#qty').val();
-            var total_price = qty*price;
-           document.getElementById("total_price").innerHTML = "€"+total_price+"";
-
-
-            alert(total_price);
-        }
-                
-
+<script>
+//   var totalP = [];
+// $('.qty').each(function(){
+//     totalP.push($(this).val());
+// });
 
 </script>
      <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>

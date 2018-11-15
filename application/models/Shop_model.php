@@ -33,17 +33,24 @@ class Shop_model extends CI_model{
    $query = $this->db->get();
     return $query->result_array();
 }
-
+//add product to cart
 public function input_product_to_cart($product){
 $this->db->insert('cart', $product);
 }
-
-public function retrieve_products_from_cart($user_id){
+//amount of products in cart
+public function retrieve_amount_from_cart($user_id){
   $this->db->select('*');
   $this->db->from('cart');
   $this->db->where('user_id',$user_id);
    $query = $this->db->get();
     return $query->result_array();
     }
+
+//Delete Item From Cart
+public function deleteFromCart($cart_id){
+ $this->db->where("cart_id",$cart_id);
+    $this->db->delete("cart");
+    return;
+}
 }
 ?>
