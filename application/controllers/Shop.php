@@ -75,11 +75,6 @@ public function __construct(){
     $user_id = $this->uri->segment(3);
 $cartDetails=$this->shop_model->retrieve_amount_from_cart($user_id);
 $main=array();
-//print_r($productDetails);
-  // foreach ($cartDetails as $cartInf) {
-  //     echo "ProductID: ".$cartInf['product_id']. "Quantity: ".$cartInf['quantity'];
-  //   }
-
 
   foreach ($cartDetails as $cartInf) {
 $productDetails=$this->shop_model->display_cart_products($cartInf['product_id']);
@@ -134,5 +129,28 @@ redirect('shop/shop_cart/'.$user_id);
 
 }
 
+public function shop_order_details(){
+$user_id=$this->uri->segment(3);
+$cartTable=$this->shop_model->orderDetails($user_id);
+//print_r($cartTable);
+$groceryTPrice=0;
+$totalCount=0;
+foreach ($cartTable as $key ) {
+ $amountforP=$key['quantity']*$key['product_price'];
+
+ $groceryTPrice+=$amountforP;
+ $totalCount+=$key['quantity'];
+}
+//echo $totalCount;
+//echo $groceryTPrice;
+$data=[
+'Total_Items'=>$totalCount,
+'Total_Grocery_Cost'=>$groceryTPrice
+];
+  $this->load->view('templates/header');
+   $this->load->view('shop/shop_order_details',$data);
+   $this->load->view('templates/footer');
+
+}
 }
 ?>

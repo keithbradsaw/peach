@@ -37,7 +37,7 @@ class Shop_model extends CI_model{
 public function input_product_to_cart($product){
 $this->db->insert('cart', $product);
 }
-//amount of products in cart
+//Amount of products in cart
 public function retrieve_amount_from_cart($user_id){
   $this->db->select('*');
   $this->db->from('cart');
@@ -51,6 +51,16 @@ public function deleteFromCart($cart_id){
  $this->db->where("cart_id",$cart_id);
     $this->db->delete("cart");
     return;
+}
+//Order Details Page(Multiple Joins)
+public function orderDetails($user_id){
+  $this->db->select('a.quantity,b.product_price');
+    $this->db->from('cart a');
+    $this->db->join('product b', 'b.product_id = a.product_id'); 
+    $this->db->where('user_id',$user_id);
+    $this->db->where('a.status','Pending');
+       $query = $this->db->get();
+    return $query->result_array();
 }
 }
 ?>

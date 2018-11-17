@@ -40,6 +40,7 @@ if(!$user_id){
                     <!-- PRODUCT -->
                 <?php 
                   $i=0;
+                  $total=0;
                 foreach($productList as $products) {
                     
                 ?>
@@ -58,13 +59,14 @@ if(!$user_id){
                             </div>
                             <div class="col-4 col-sm-4 col-md-4">
                                 <div class="quantity">
-                          <input id="qty" type="number" step="1" max="99" min="1" value="<?php echo $products['product_quantity']; ?>"  title="Qty" class="qty" size="4">
+                             <h6><strong>Quantity:<?php echo $products['product_quantity']; ?></strong></h6>
+                          <!-- input label="Quantity" id="qty" type="number" step="1" max="99" min="1" value="<?php //echo $products['product_quantity']; ?>"  title="Qty" class="qty" size="4"> -->
                                 </div>
                             </div>
                             <div class="col-2 col-sm-2 col-md-2 text-right">
                             <a href="<?php echo base_url('shop/deleteFromCart/').$products['cart_id']."/".$this->session->userdata('user_id') ?>">
                                 <button  type="button" class="btn btn-outline-danger btn-sm deletebtn">
-                                   <span>X</span>
+                                   <span>Remove</span>
                                 </button>
                                 </a>
                                     </div>
@@ -72,30 +74,27 @@ if(!$user_id){
                     </div><!--End Of row-->
                     <hr>
                     <!-- END PRODUCT -->
-<?php                     $i++; } ?>
+<?php   
+//Used to display   
+$pValue = $products['product_price']*$products['product_quantity'];                 
+$total+=$pValue;
+$i++; } ?>
 
-   <!--              <div class="float-right">
+ <!--                <div class="float-right">
                     <a href="" class="btn btn-outline-secondary pull-right">
                         Update shopping cart
                     </a>
                 </div> -->
             </div>
             <div class="card-footer">
-                <div class="float-right" style="margin: 10px">
-                    <a href="" class="btn btn-success pull-right">Checkout</a>
+                <div class="float-right">
+                    <a href="<?php echo base_url('shop/shop_order_details/').$this->session->userdata('user_id')  ?>" class="btn btn-outline-success pull-right">Checkout</a>
                     <div class="float-right" style="margin: 5px">
-                        Total price: <b id="total_price">€0</b>
+                        Total price: <b id="total_price">€<?php  echo $total;?></b>
                     </div>
                 </div>
             </div>
         </div>
-<script>
-//   var totalP = [];
-// $('.qty').each(function(){
-//     totalP.push($(this).val());
-// });
-
-</script>
      <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
     <script>
       feather.replace()
