@@ -8,7 +8,6 @@
 .plan-text { padding-left: 35px; }
 .plan-price { position: absolute; right: 0px; color: #094bde; font-size: 20px; font-weight: 700; letter-spacing: -1px; line-height: 1.5; bottom: 43px; }
 .term-price { bottom: 18px; }
-.secure-price { bottom: 68px; }
 .summary-block { border-bottom: 2px solid #d7d9de; }
 .summary-block:last-child { border-bottom: 0px; }
 .summary-content { padding: 28px 0px; }
@@ -27,6 +26,10 @@
 .btn-default:hover { background-color: #063bb3; color: #fff; border: 1px solid #063bb3; }
 .btn-default.focus, .btn-default:focus { background-color: #063bb3; color: #fff; border: 1px solid #063bb3; }
 </style>
+ <script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
 <header>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
   <a class="navbar-brand" href="#">GoShopping</a>
@@ -68,10 +71,10 @@ if(!$user_id){
                         <h3 class="box-title">Your Groceries</h3>
                         <div class="plan-selection">
                             <div class="plan-data">
-                                <label for="question1">Products</label>
+                                <label for="question1">Groceries</label>
                                 <p class="plan-text">
                                  Amount of items: <?php echo $Total_Items ?></p>
-                                <span class="plan-price">$29 </span>
+                                <span class="plan-price">€<?php echo $Total_Grocery_Cost ?>0<span>
                             </div>
                         </div>
                     </div>
@@ -81,7 +84,7 @@ if(!$user_id){
                             <div class="plan-data">
                                 <label for="question1">Choose How Often you Want a delivery</label>
                                 <p class="plan-text">
-                                <select name="delivery_freq">
+                                <select id="delivery_freq" name="delivery_freq">
                                     <option value="every_week">Each Week</option>
                                     <option value="every_two_weeks">Every Two Weeks</option>
                                     <option value="every_three_weeks">Every Three Weeks</option>
@@ -98,7 +101,7 @@ if(!$user_id){
                             <div class="summary-content">
                                 <div class="summary-head"><h5 class="summary-title">Groceries</h5></div>
                                 <div class="summary-price">
-                                    <p class="summary-text">$10</p>
+                                    <p class="summary-text">€<span id="groceriesP" value="<?php echo $Total_Grocery_Cost ?>" ><?php echo $Total_Grocery_Cost ?>0</span></p>
                                     
                                 </div>
                             </div>
@@ -110,30 +113,83 @@ if(!$user_id){
                                 
                                 </div>
                                 <div class="summary-price">
-                                    <p class="summary-text">$22</p>
+                                    <p class="summary-text">€<span id="deliveryP">12</span></p>
                                     
                                 </div>
                             </div>
                         </div>
                         <div class="summary-block">
                             <div class="summary-content">
-                               <div class="summary-head"> <h5 class="summary-title">Total</h5><span id="duration"class="summary-small-text pull-right">Per Week</span></div>
+                               <div class="summary-head"> <h5 class="summary-title">Total</h5><span id="duration"class="summary-small-text pull-right">Per Month</span></div>
                                 <div class="summary-price">
-                                    <p class="summary-text">$258</p>
+                                    <p class="summary-text">€<span id="totalP">0<span></p>
                                    <!--  <span class="summary-small-text pull-right">Per Week</span> -->
                                 </div>
                             </div>
                         </div>
                     </div>
                     
-    <a href="#" class="btn btn-primary btn-lg mb30">Complete Order</a>
+    <a id="w" href="<?php echo base_url('shop/shop_complete_order'); ?>" class="btn btn-primary btn-lg mb30">Complete Order</a>
                 </div>
             </div>
+</div>
+</div>
+<script>
+$('document').ready(function() {
+ deliveryP = 12;
+        $("#deliveryP").text(deliveryP);
+        groceriesP=parseFloat(document.getElementById("groceriesP").textContent);
+        var totalP=groceriesP+deliveryP;
+        $("#totalP").text(totalP);
+        $("#w").attr("href", "<?php echo base_url('shop/shop_complete_order/every_week'); ?>");
 
-	
-	
-	
-	
-	
-</div>
-</div>
+$('select').on('change', function() {
+
+     if($('#delivery_freq').val() == "every_week") 
+    {
+        deliveryP = 12;
+        $("#deliveryP").text(deliveryP);
+        groceriesP=parseFloat(document.getElementById("groceriesP").textContent);
+        var totalP=groceriesP+deliveryP;
+        $("#totalP").text(totalP);
+        $("#w").attr("href", "<?php echo base_url('shop/shop_complete_order/every_week'); ?>");
+    }
+    else if ($('#delivery_freq').val() == "every_two_weeks") 
+    {
+        deliveryP = 20;
+         $("#deliveryP").text(deliveryP);
+        groceriesP=parseFloat(document.getElementById("groceriesP").textContent);
+        var totalP=groceriesP+deliveryP;
+        $("#totalP").text(totalP);
+        $("#w").attr("href", "<?php echo base_url('shop/shop_complete_order/every_two_weeks'); ?>");
+    }
+    else if ($('#delivery_freq').val() == "every_three_weeks") 
+    {
+        deliveryP = 28;
+         $("#deliveryP").text(deliveryP);
+        groceriesP=parseFloat(document.getElementById("groceriesP").textContent);
+        var totalP=groceriesP+deliveryP;
+        $("#totalP").text(totalP);
+        $("#w").attr("href", "<?php echo base_url('shop/shop_complete_order/every_three_weeks'); ?>");
+
+    }
+    else if ($('#delivery_freq').val() == "every_four_weeks") 
+    {
+        deliveryP = 35;
+         $("#deliveryP").text(deliveryP);
+        groceriesP=parseFloat(document.getElementById("groceriesP").textContent);
+    var totalP=groceriesP+deliveryP;
+    $("#totalP").text(totalP);
+     $("#w").attr("href", "<?php echo base_url('shop/shop_complete_order/every_four_weeks')?>");
+    }
+  
+});  
+
+    
+
+});
+
+
+
+
+</script>

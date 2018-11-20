@@ -42,6 +42,7 @@ public function retrieve_amount_from_cart($user_id){
   $this->db->select('*');
   $this->db->from('cart');
   $this->db->where('user_id',$user_id);
+  $this->db->where('status','Pending');
    $query = $this->db->get();
     return $query->result_array();
     }
@@ -62,5 +63,44 @@ public function orderDetails($user_id){
        $query = $this->db->get();
     return $query->result_array();
 }
+
+/*To Compelete an order we will need
+  insert based on user id and where status is not delivered
+  based on that we can show the details to the driver 
+
+  Select from the cart where the user id matches and status is pending
+  */
+  public function cart_info($user_id){
+    $this->db->select('cart_id');
+    $this->db->from('cart');
+    $this->db->where('user_id',$user_id);
+    $this->db->where('status','Pending');
+       $query = $this->db->get();
+    return $query->result_array();
+  }
+  public function addr_info($user_id){
+    $this->db->select('user_address_id');
+    $this->db->from('user_address');
+    $this->db->where('user_id',$user_id);
+       $query = $this->db->get();
+    return $query->row_array();
+  }
+    public function pay_info($user_id){
+    $this->db->select('user_payment_details_id');
+    $this->db->from('user_payment_details');
+    $this->db->where('user_id',$user_id);
+       $query = $this->db->get();
+    return $query->row_array();
+  }
+  //Insert Order 
+  public function insert_order($order){
+$this->db->insert('orders', $order);
+  }
+  //Update cart to change status 
+  public function cart_to_order($cart_id){
+    $status = array('status' => 'Ordered'); 
+$this->db->where('cart_id', $cart_id);
+$this->db->update('cart', $status);
+  }
 }
 ?>
