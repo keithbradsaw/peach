@@ -174,36 +174,75 @@ public function shop_complete_order(){
       $total_payable = $groceryCost + 35;
    }
 
-
    $user_id=$this->session->userdata('user_id');
 
-   $addr_info=$this->shop_model->addr_info($user_id);
-   $payment_info=$this->shop_model->pay_info($user_id);
+  // $addr_info=$this->shop_model->addr_info($user_id);
 
+//    foreach ($addr_info as $addr) {
+// $addr_id =$addr['user_address_id'];
+//    }
+
+//    $payment_info=$this->shop_model->pay_info($user_id);
+//    $pay_id=$payment_info['user_payment_id'];
+
+
+
+
+
+   //insert to order table &get that id 
+   $orderid=$this->shop_model->insert_order_get_oid($user_id);
    //Get Cart id from user id and status pending
+
+//echo $orderid['order_id'];
 $cartInfo=$this->shop_model->cart_info($user_id);
 
 foreach ($cartInfo as $submission) {
-   $order=array(
-    'user_id'=> $user_id,
-    'user_cart_id'=> $submission['cart_id'],
-    'user_addr_id'=> $addr_info['user_address_id'],
-    'user_payment_id'=> $payment_info['user_payment_details_id'],
-    'total_payable'=> $total_payable,
-    'frequency'=> $frequency,
-    'status'=>"Waiting for driver to collect"
+  $orderItems=array(
+    'order_id'=>$orderid['order_id'],
+    'cart_id'=> $submission['cart_id']
     );
-   //insert to order table
-  //$this->shop_model->insert_order($order);
+  $this->shop_model->insert_to_order_items($orderItems);
+ $this->shop_model->cart_to_order($submission['cart_id']);
+}
+
+
+$order=array(
+  'status'=>"Waiting for driver to collect",
+    'frequency'=>$frequency,
+  'total_payable'=>$total_payable
+  );
+$this->shop_model->update_order($orderid['order_id'],$order);
+
+
+
+
+//update the cart table with the cart id and change status
+
+
+//$cartInfo=$this->shop_model->cart_info($user_id);
+
+// foreach ($cartInfo as $submission) {
+//    $order=array(
+//     'user_id'=> $user_id,
+//     'user_cart_id'=> $submission['cart_id'],
+//     'user_addr_id'=> $addr_info['user_address_id'],
+//     'user_payment_id'=> $payment_info['user_payment_details_id'],
+//     'total_payable'=> $total_payable,
+//     'frequency'=> $frequency,
+//     'status'=>"Waiting for driver to collect"
+//     );
+   //insert to order table &get that id 
+// /$this->shop_model->insert_order($order);
   //update the cart table with the cart id and change status
-  $this->shop_model->cart_to_order($submission['cart_id']);
-//print_r($order);
-}
+  //$this->shop_model->cart_to_order($submission['cart_id']);
 
-//foreach cart info do the below array
-  //Array For orders Table
+// /}
+    //Then Display the view!
+  $this->load->view('templates/header');
+   $this->load->view('shop/shop_complete_order');
+   $this->load->view('templates/footer');
 
 
-}
+    }
 }
 ?>

@@ -84,7 +84,7 @@ h1 a {
 	<a href="#" class="badge badge-info"><?php echo $productinfo['product_category_name'] ?></a>
 	    <div class="card-body">
             <span>Current Price
-            <h5>&euro;<span id="price" value="<?php echo $productinfo['product_price'] ?>"><?php echo $productinfo['product_price'] ?></span>0
+            <h5>&euro;<span id="price" value="<?php echo $productinfo['product_price'] ?>"><?php echo $productinfo['product_price'] ?></span>
             </h5>
             	<input id="qty" style="width:40px;" type="number" value="1" min="1">
          <button id="addtocart" type="button" class="btn btn-sm btn-outline-success add_to_cart" data-pid="<?php echo $productinfo['product_id'] ?>" data-uid="<?php echo $user_id ?>"

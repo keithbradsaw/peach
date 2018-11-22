@@ -92,15 +92,43 @@ public function orderDetails($user_id){
        $query = $this->db->get();
     return $query->row_array();
   }
-  //Insert Order 
-  public function insert_order($order){
-$this->db->insert('orders', $order);
+
+  //Insert Order and return order id 
+  public function insert_order_get_oid($user_id){
+
+$userdata=array('user_id' =>$user_id);
+$this->db->insert('order', $userdata);
+
+
+//$last_row=$this->db->select('id')->order_by('id',"desc")->limit(1)->get('order')->row();
+
+
+ $this->db->select('order_id');
+ $this->db->where('user_id', $user_id);
+    $this->db->order_by('order_id',"desc");
+    $this->db->limit(1);
+       $query = $this->db->get('order');
+    foreach ($query->result_array() as $key) {
+      return $key;
+    }
   }
+//Inserts to order Items Table
+  public function insert_to_order_items($orderItems){
+    $this->db->insert('order_items', $orderItems);
+    return;
+  }
+
   //Update cart to change status 
   public function cart_to_order($cart_id){
     $status = array('status' => 'Ordered'); 
 $this->db->where('cart_id', $cart_id);
 $this->db->update('cart', $status);
   }
+  //update order table
+  public function update_order($order_id, $order){
+$this->db->where('order_id', $order_id);
+$this->db->update('order', $order);
+  }
+
 }
 ?>

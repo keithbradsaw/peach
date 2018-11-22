@@ -92,10 +92,16 @@ public function update_PaymentDetails($id, $paymentDetails){
         $this->db->update('user_payment_details', $paymentDetails);
 }
 
+public function display_user_orders($user_id){
+  $this->db->select('order_id, total_payable, status, frequency');
+  $this->db->from('order');
+  $this->db->where('user_id',$user_id);
+   $query = $this->db->get();
+    return $query->result_array();
+
+}
+
+
  }
-
-
-
-
 
 ?>

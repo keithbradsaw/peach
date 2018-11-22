@@ -74,7 +74,7 @@ if(!$user_id){
                                 <label for="question1">Groceries</label>
                                 <p class="plan-text">
                                  Amount of items: <?php echo $Total_Items ?></p>
-                                <span class="plan-price">€<?php echo $Total_Grocery_Cost ?>0<span>
+                                <span class="plan-price">€<?php echo $Total_Grocery_Cost ?><span>
                             </div>
                         </div>
                     </div>
@@ -101,7 +101,7 @@ if(!$user_id){
                             <div class="summary-content">
                                 <div class="summary-head"><h5 class="summary-title">Groceries</h5></div>
                                 <div class="summary-price">
-                                    <p class="summary-text">€<span id="groceriesP" value="<?php echo $Total_Grocery_Cost ?>" ><?php echo $Total_Grocery_Cost ?>0</span></p>
+                                    <p class="summary-text">€<span id="groceriesP" value="<?php echo $Total_Grocery_Cost ?>" ><?php echo $Total_Grocery_Cost ?></span></p>
                                     
                                 </div>
                             </div>

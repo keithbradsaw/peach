@@ -180,28 +180,41 @@ body {
           <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
             <h1 class="h2">Your Orders</h1> <br>
           </div>
-          <h5 class=""><?php echo "Hey ".$this->session->userdata('user_full_name').", it looks like you have no orders at the minute."?>
+          <h5 class="">
           <a href="<?php echo base_url('shop/shop_index'); ?>">Head to the store</a>
-      </h5>
-           <table class="table table-bordered table-striped">
-          <tr>
-            <td>Order Number(For Tracking)</td>
-            <td>-</td>
-          </tr>
-          <tr>
-            <td>Order Contents</td>
-            <td>-</td>
-          </tr>
-          <tr>
-            <td>Order Price</td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>Current Status Of Order</td>
-            <td>-</td>
-          </tr>
+          </h5>
+      <table class="table">
+  <thead class="thead-dark">
+    <tr>
+    <!--Order No will be a combination of theorder ids  -->
+      <th scope="col">Order Number</th>
+      <th scope="col">Order Price</th>
+      <th scope="col">Order Status</th>
+      <th scope="col">Delivery Frequency</th>
+      <th scope="col">Driver</th>
+    </tr>
+  </thead>
+  <?php foreach ($orders as $order) { 
+    if($order['status'] =="Waiting for driver to collect"){
+      $orderStatus="text-warning";
+    }elseif($order['status'] =="Delivery In Progress"){
+      $orderStatus="text-success";
+    }
+    ?>
+      
+  <tbody>
+    <tr>
+      <th scope="row"><?php echo $order['order_id'];?></th>
+      <td>€<?php echo $order['total_payable'];?></td>
+      <td class="<?php echo $orderStatus; ?>"><?php echo $order['status'];?></td>
+      <td><?php echo $order['frequency'];?></td>
+      <td>Not Assigned</td>
+    </tr>
+  </tbody>
+<?php  } ?>
+</table>
 
-      </table>
+
         </main>
 
     <!-- Icons -->

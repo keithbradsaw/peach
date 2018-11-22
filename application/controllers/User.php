@@ -189,11 +189,26 @@ redirect('user/user_profile');
 
 }
 public function user_profile_orders(){
+  $user_id=$this->session->userdata('user_id');
+$orderinfo=$this->user_model->display_user_orders($user_id);
+$data=[
+'orders'=> $orderinfo
+];
+$this->load->view("user_profile_orders.php",$data);
+// foreach ($orderinfo as $order) {
+//   $payable=$order['total_payable'];
 
-  $this->load->view("user_profile_orders.php");
+//   if($order['user_addr_id'] == $order['user_payment_id']){
+
+//   }
+    
+//   }
+
 }
+
+
 public function user_logout(){
- 
+
   $this->session->sess_destroy();
   redirect('user/login_view', 'refresh');
 }
