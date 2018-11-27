@@ -8,6 +8,8 @@ public function __construct(){
   	$this->load->helper('url');
   	$this->load->model('user_model');
         $this->load->library('session');
+        $this->load->helper('html');
+
  
 }
 	public function index(){
@@ -195,14 +197,6 @@ $data=[
 'orders'=> $orderinfo
 ];
 $this->load->view("user_profile_orders.php",$data);
-// foreach ($orderinfo as $order) {
-//   $payable=$order['total_payable'];
-
-//   if($order['user_addr_id'] == $order['user_payment_id']){
-
-//   }
-    
-//   }
 
 }
 

@@ -3,7 +3,7 @@
   --jumbotron-padding-y: 3rem;
 }
 .album{
-background-color: #E8EAF6;
+background-color: #9e9e9e0f;
 }
 
 .jumbotron {
@@ -39,7 +39,7 @@ footer {
 footer p {
   margin-bottom: .25rem;
 }
-
+/*
 .card-img-top{
 background-color: #424242;
 padding: 50px;
@@ -47,10 +47,18 @@ padding: 50px;
 .card-img-top h5{
   color: #fff;
 }
+
+*/
 .feather {
   width: 20px;
   height: 20px;
 
+}
+.card{
+  margin-bottom: 1.875rem;
+  border-radius: 0;
+  box-shadow: 0 10px 40px 0 rgba(62, 57, 107, 0.07), 0 2px 9px 0 rgba(62, 57, 107, 0.06);
+}
 }
   </style>
   <?php
@@ -106,7 +114,82 @@ if(!$user_id){
         <div class="container">
         <h2 class="text-center" >Choose From Our Categories</h2>
         <hr>
-          <div class="row">
+        <div class="row match-height">
+    <div class="col-md-6 col-sm-12">
+      <div class="card border-secondary text-center" style="height: 313.563px;">
+        <div class="card-content">
+          <div class="card-body">
+            <img src="<?php echo base_url('../../assets/images/FreshPears7Pack_image.png') ?>" alt="element 02" width="225" class="mb-1">
+            <h3 class="card-title">Fresh Food</h3>
+            <p class="card-text">Fruit, Vegetables & Meat.</p>
+            <button class="btn btn-outline-success my-2">View Products</button>
+          </div>
+        </div>
+      </div>
+    </div>
+   <div class="col-md-6 col-sm-12">
+      <div class="card border-secondary text-center " style="height: 313.563px;">
+        <div class="card-content">
+          <div class="card-body">
+            <img src="<?php echo base_url('../../assets/images/FreshPears7Pack_image.png') ?>" alt="element 02" width="225" class="mb-1">
+            <h3 class="card-title">Frozen Food</h3>
+            <p class="card-text">Fruit, Vegetables & Meat.</p>
+            <button class="btn btn-outline-success my-2">View Products</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 col-sm-12">
+      <div class="card border-secondary text-center " style="height: 313.563px;">
+        <div class="card-content">
+          <div class="card-body">
+            <img src="<?php echo base_url('../../assets/images/FreshPears7Pack_image.png') ?>" alt="element 02" width="225" class="mb-1">
+            <h3 class="card-title">Food Cupboard</h3>
+            <p class="card-text">Fruit, Vegetables & Meat.</p>
+            <button class="btn btn-outline-success my-2">View Products</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 col-sm-12">
+      <div class="card border-secondary text-center" style="height: 313.563px;">
+        <div class="card-content">
+          <div class="card-body">
+            <img src="<?php echo base_url('../../assets/images/FreshPears7Pack_image.png') ?>" alt="element 02" width="225" class="mb-1">
+            <h3 class="card-title">Drinks</h3>
+            <p class="card-text">Fruit, Vegetables & Meat.</p>
+            <button class="btn btn-outline-success my-2">View Products</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 col-sm-12">
+      <div class="card border-secondary text-center" style="height: 313.563px;">
+        <div class="card-content">
+          <div class="card-body">
+            <img src="<?php echo base_url('../../assets/images/FreshPears7Pack_image.png') ?>" alt="element 02" width="225" class="mb-1">
+            <h3 class="card-title">Household Goods</h3>
+            <p class="card-text">Fruit, Vegetables & Meat.</p>
+            <button class="btn btn-outline-success my-2">View Products</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 col-sm-12">
+      <div class="card border-secondary text-center" style="height: 313.563px;">
+        <div class="card-content">
+          <div class="card-body">
+            <img src="<?php echo base_url('../../assets/images/FreshPears7Pack_image.png') ?>" alt="element 02" width="225" class="mb-1">
+            <h3 class="card-title">Health &amp; Beauty</h3>
+            <p class="card-text">Fruit, Vegetables & Meat.</p>
+            <button class="btn btn-outline-success my-2">View Products</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End of Row -->
+ <!--          <div class="row">
             <div class="col-md-4">
               <div class="card mb-4 shadow-sm">
                 <span class="card-img-top">
@@ -117,7 +200,7 @@ if(!$user_id){
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
 
-                    <a href="<?php echo base_url('shop/shop_category_items/'); ?>2">
+                    <a href="<?php //echo base_url('shop/shop_category_items/'); ?>2">
                       <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
                       </a>
                     </div>
@@ -125,8 +208,8 @@ if(!$user_id){
                   </div>
                 </div>
               </div>
-            </div><!--End ofcol4-->
-            <div class="col-md-4">
+            </div> --><!--End ofcol4-->
+            <!-- <div class="col-md-4">
               <div class="card mb-4 shadow-sm">
                 <span class="card-img-top">
                      <h5 class="flex-d text-center">Frozen Goods</h5>
@@ -135,16 +218,16 @@ if(!$user_id){
                   <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
-                    <a href="<?php echo base_url('shop/shop_category_items/'); ?>1">
+                    <a href="<?php //echo base_url('shop/shop_category_items/'); ?>1">
                       <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
                       </a>
                     </div>
-                    <!-- <small class="text-muted">9 mins</small> -->
+                     <small class="text-muted">9 mins</small>
                   </div>
                 </div>
               </div>
-            </div><!--End ofcol4-->
-            <div class="col-md-4">
+            </div> --><!--End ofcol4-->
+          <!--   <div class="col-md-4">
               <div class="card mb-4 shadow-sm">
                 <span class="card-img-top">
                      <h5 class="flex-d text-center">Food Cupboard</h5>
@@ -153,7 +236,7 @@ if(!$user_id){
                   <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
-                    <a href="<?php echo base_url('shop/shop_category_items/'); ?>3">
+                    <a href="<?php //echo base_url('shop/shop_category_items/'); ?>3">
                       <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
                       </a>
                     </div>
@@ -161,8 +244,8 @@ if(!$user_id){
                   </div>
                 </div>
               </div>
-            </div><!--End ofcol4-->
-
+            </div> --><!--End ofcol4-->
+<!-- 
             <div class="col-md-4">
               <div class="card mb-4 shadow-sm">
                 <span class="card-img-top">
@@ -172,7 +255,7 @@ if(!$user_id){
                   <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                   <div class="d-flex justify-content-between align-items-center">
                                         <div class="btn-group">
-                    <a href="<?php echo base_url('shop/shop_category_items/'); ?>4">
+                    <a href="<?php// echo base_url('shop/shop_category_items/'); ?>4">
                       <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
                       </a>
                     </div>
@@ -180,8 +263,8 @@ if(!$user_id){
                   </div>
                 </div>
               </div>
-            </div><!--End ofcol4-->
-            <div class="col-md-4">
+            </div> --><!--End ofcol4-->
+            <!-- <div class="col-md-4">
               <div class="card mb-4 shadow-sm">
                 <span class="card-img-top">
                      <h5 class="flex-d text-center">Household Goods</h5>
@@ -190,37 +273,41 @@ if(!$user_id){
                   <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
+                     <a href="<?php //echo base_url('shop/shop_category_items/'); ?>5">
                       <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                      </a>
                     </div>
                    
                   </div>
                 </div>
               </div>
-            </div><!--End ofcol4-->
-            <div class="col-md-4">
+            </div> --><!--End ofcol4-->
+            <!-- <div class="col-md-4">
               <div class="card mb-4 shadow-sm">
                 <span class="card-img-top">
-                     <h5 class="flex-d text-center">Health &amp; Fitness</h5>
+                     <h5 class="flex-d text-center">Health &amp; Beauty</h5>
                 </span>
                 <div class="card-body">
                   <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
+                      <a href="<?php// echo base_url('shop/shop_category_items/'); ?>6">
                       <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                      </a>
                     </div>
                    
                   </div>
                 </div>
               </div>
-            </div><!--End ofcol4-->
+            </div> --><!--End ofcol4
 
-            </div><!--end of row -->
+            </div> --><!-- end of row -->
             
         <h2 class="text-center" style="color: #212529;">Current Offers</h2>
         <hr>
         <hr>
-        <div class="row">
-            <div class="col-md-4">
+ <!--       <div class="row">
+             <div class="col-md-4">
               <div class="card mb-4 shadow-sm">
                 <span class="card-img-top">
                      <h5 class="flex-d text-center">Ben And Jerry's Peanut Butter Cup</h5>
@@ -229,7 +316,7 @@ if(!$user_id){
                   <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
-                    <a href="<?php echo base_url('shop/Get_product_by_id/5/1'); ?>">
+                    <a href="<?php// echo base_url('shop/Get_product_by_id/5/1'); ?>">
                       <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
                       </a>
                     </div>
@@ -237,8 +324,8 @@ if(!$user_id){
                   </div>
                 </div>
               </div>
-            </div><!--End ofcol4-->
-                        <div class="col-md-4">
+            </div> --><!--End ofcol4-->
+                       <!--  <div class="col-md-4">
               <div class="card mb-4 shadow-sm">
                 <span class="card-img-top">
                      <h5 class="flex-d text-center">Birds Eye Steam Fresh Broccoli Green Beans And Sweetcorn </h5>
@@ -247,7 +334,7 @@ if(!$user_id){
                   <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
-                    <a href="<?php echo base_url('shop/Get_product_by_id/6/1'); ?>">
+                    <a href="<?php// echo base_url('shop/Get_product_by_id/6/1'); ?>">
                       <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
                       </a>
                     </div>
@@ -255,8 +342,8 @@ if(!$user_id){
                   </div>
                 </div>
               </div>
-            </div><!--End ofcol4-->
-            <div class="col-md-4">
+            </div> --><!--End ofcol4-->
+            <!-- <div class="col-md-4">
               <div class="card mb-4 shadow-sm">
                 <span class="card-img-top">
                      <h5 class="flex-d text-center">Frozen Goods</h5>
@@ -271,9 +358,10 @@ if(!$user_id){
                   </div>
                 </div>
               </div>
-            </div><!--End ofcol4-->
+            </div> --><!--End ofcol4
 
-</div>
+</div>-->
+
           </div>
         </div>
       </div>
@@ -285,8 +373,7 @@ if(!$user_id){
         <p class="float-right">
           <a href="#">Back to top</a>
         </p>
-        <p>Album example is &copy; Bootstrap, but please download and customize it for yourself!</p>
-        <p>New to Bootstrap? <a href="../../">Visit the homepage</a> or read our <a href="../../getting-started/">getting started guide</a>.</p>
+        <p>GoShopping</p>
       </div>
     </footer>
 

@@ -8,9 +8,8 @@
     <div class="collapse navbar-collapse" id="exCollapsingNavbar2">
             <ul class="nav navbar-nav ">
         <li class="nav-item active"> <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a> </li>
-        <li class="nav-item"> <a class="nav-link" href="<?php echo base_url('user/login_view'); ?>">User Log In</a> </li>
-        <li class="nav-item"> <a class="nav-link" href="<?php echo base_url('driver/driver_login'); ?>">Driver Log In</a> </li>
-
+        <li class="nav-item"> <a class="nav-link" href="<?php echo base_url('user/login_view'); ?>"> User Log In</a> </li>
+        <li class="nav-item"> <a class="nav-link" href="<?php echo base_url('driver/driver_login'); ?>"> Driver Log In</a> </li>
       </ul>
           </div>
   </div>
@@ -69,28 +68,28 @@
              <div class="myform form ">
               <div class="logo mb-3">
                         <div class="col-md-12 text-center">
-                            <h1>Register For An Account</h1>
+                            <h1>Register for a Driver Account</h1>
                         </div>
                     </div>
-               <form action="<?php echo base_url('user/register_user'); ?>" method="post" name="register">
+               <form action="<?php echo base_url('driver/register_driver'); ?>" method="post" name="register">
         <div class="form-group">
-              <input class="form-control" placeholder="Full Name *" name="user_full_name" type="text" autofocus required>
+              <input class="form-control" placeholder="Full Name *" name="driver_full_name" type="text" autofocus required>
             </div>
             <div class="form-group">
-              <input class="form-control" placeholder="E-mail *" name="user_email_address" type="email" autofocus required>
+              <input class="form-control" placeholder="E-mail *" name="driver_email_address" type="email" autofocus required>
             </div>
             <div class="form-group">
-              <input class="form-control" placeholder="Password *" name="user_password" type="password" value="" required>
+              <input class="form-control" placeholder="Password *" name="driver_password" type="password" value="" required>
             </div>           
             <div class="form-group">
                 <input type="password" class="form-control"  placeholder="Confirm Password *" value="" required/>
             </div>
 
                 <div class="form-group">
-                  <input class="form-control" placeholder="Age *" name="user_age" type="number" value="" required>
+                  <input class="form-control" placeholder="Age *" name="driver_age" type="number" value="" required>
                 </div>
                  <div class="form-group">
-                  <input class="form-control" minlength="10" maxlength="10" placeholder="Mobile Number *" name="user_phone_number" type="number" value="" required>
+                  <input class="form-control" minlength="10" maxlength="10" placeholder="Mobile Number *" name="driver_phone_number" type="number" required>
               </div>
 
                         <div class="form-group">
@@ -111,7 +110,7 @@
                             </p>
                         </div>
                         <div class="form-group">
-                            <p class="text-center">Already Have An Account? <a href="<?php echo base_url('user/login_view'); ?>" id="signin">Sign In here</a></p>
+                            <p class="text-center">Already Have An Account? <a href="<?php echo base_url('driver/driver_login'); ?>" id="signin">Sign In here</a></p>
                         </div>
                     </form>
                     </div>

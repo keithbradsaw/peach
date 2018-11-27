@@ -186,6 +186,7 @@ body {
             <div id="pay-invoice" class="card">
                 <div class="card-body">
                     <div class="card-title">
+                    
                         <h2 class="text-center">Current Address</h2>
                     </div>
                     <hr>
