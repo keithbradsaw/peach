@@ -67,9 +67,8 @@ public function login_driver(){
         $this->session->set_userdata('driver_age',$data['driver_age']);
         $this->session->set_userdata('driver_email_address',$data['driver_email_address']);
         $this->session->set_userdata('driver_phone_number',$data['driver_phone_number']);
-        $this->load->view('templates/header');
-        $this->load->view("driver/driver_profile.php");
-        $this->load->view('templates/footer');
+        $this->driver_profile();
+        
       }
       else{
         $this->session->set_flashdata('error_msg', 'Error occured,Try again.');
@@ -79,11 +78,18 @@ public function login_driver(){
       }
 }
 
+
 public function driver_profile(){
     $this->load->view('templates/header');
     $this->load->view("driver/driver_profile.php");
     $this->load->view('templates/footer');
 
+}
+public function driver_profile_deliveries(){
+$data['available_orders']=$this->driver_model->list_available_orders();
+    $this->load->view('templates/header');
+    $this->load->view("driver/driver_profile_deliveries.php",$data);
+    $this->load->view('templates/footer');
 }
 
 public function driver_logout(){

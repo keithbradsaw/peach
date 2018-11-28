@@ -122,7 +122,9 @@ if(!$user_id){
             <img src="<?php echo base_url('../../assets/images/FreshPears7Pack_image.png') ?>" alt="element 02" width="225" class="mb-1">
             <h3 class="card-title">Fresh Food</h3>
             <p class="card-text">Fruit, Vegetables & Meat.</p>
+            <a href="<?php echo base_url('shop/shop_category_items/'); ?>2">
             <button class="btn btn-outline-success my-2">View Products</button>
+            </a>
           </div>
         </div>
       </div>
@@ -131,10 +133,12 @@ if(!$user_id){
       <div class="card border-secondary text-center " style="height: 313.563px;">
         <div class="card-content">
           <div class="card-body">
-            <img src="<?php echo base_url('../../assets/images/FreshPears7Pack_image.png') ?>" alt="element 02" width="225" class="mb-1">
+            <img src="<?php echo base_url('../../assets/images/vanillaIcecream_image.png') ?>" alt="element 02" width="225" class="mb-1">
             <h3 class="card-title">Frozen Food</h3>
-            <p class="card-text">Fruit, Vegetables & Meat.</p>
+            <p class="card-text">Frozen Fruit, Vegetables, Meals and Desserts.</p>
+            <a href="<?php echo base_url('shop/shop_category_items/'); ?>1">
             <button class="btn btn-outline-success my-2">View Products</button>
+            </a>
           </div>
         </div>
       </div>
@@ -145,8 +149,10 @@ if(!$user_id){
           <div class="card-body">
             <img src="<?php echo base_url('../../assets/images/FreshPears7Pack_image.png') ?>" alt="element 02" width="225" class="mb-1">
             <h3 class="card-title">Food Cupboard</h3>
-            <p class="card-text">Fruit, Vegetables & Meat.</p>
+            <p class="card-text">Cereals, Canned food and Pasta.</p>
+            <a href="<?php echo base_url('shop/shop_category_items/'); ?>3">
             <button class="btn btn-outline-success my-2">View Products</button>
+            </a>
           </div>
         </div>
       </div>
@@ -155,10 +161,12 @@ if(!$user_id){
       <div class="card border-secondary text-center" style="height: 313.563px;">
         <div class="card-content">
           <div class="card-body">
-            <img src="<?php echo base_url('../../assets/images/FreshPears7Pack_image.png') ?>" alt="element 02" width="225" class="mb-1">
+            <img src="<?php echo base_url('../../assets/images/7Up_image.png') ?>" alt="element 02" width="225" class="mb-1">
             <h3 class="card-title">Drinks</h3>
-            <p class="card-text">Fruit, Vegetables & Meat.</p>
+            <p class="card-text">Water, Fizzy drinks and Juices</p>
+            <a href="<?php echo base_url('shop/shop_category_items/'); ?>4">
             <button class="btn btn-outline-success my-2">View Products</button>
+            </a>
           </div>
         </div>
       </div>
@@ -167,10 +175,12 @@ if(!$user_id){
       <div class="card border-secondary text-center" style="height: 313.563px;">
         <div class="card-content">
           <div class="card-body">
-            <img src="<?php echo base_url('../../assets/images/FreshPears7Pack_image.png') ?>" alt="element 02" width="225" class="mb-1">
+            <img src="<?php echo base_url('../../assets/images/ariel_image.png') ?>" alt="element 02" width="225" class="mb-1">
             <h3 class="card-title">Household Goods</h3>
-            <p class="card-text">Fruit, Vegetables & Meat.</p>
+            <p class="card-text">Washing Detergent, Soap and Shower Gels</p>
+            <a href="<?php echo base_url('shop/shop_category_items/'); ?>5">
             <button class="btn btn-outline-success my-2">View Products</button>
+            </a>
           </div>
         </div>
       </div>
@@ -179,10 +189,12 @@ if(!$user_id){
       <div class="card border-secondary text-center" style="height: 313.563px;">
         <div class="card-content">
           <div class="card-body">
-            <img src="<?php echo base_url('../../assets/images/FreshPears7Pack_image.png') ?>" alt="element 02" width="225" class="mb-1">
+            <img src="<?php echo base_url('../../assets/images/hand_cream_image.png') ?>" alt="element 02" width="225" class="mb-1">
             <h3 class="card-title">Health &amp; Beauty</h3>
             <p class="card-text">Fruit, Vegetables & Meat.</p>
+            <a href="<?php echo base_url('shop/shop_category_items/'); ?>6">
             <button class="btn btn-outline-success my-2">View Products</button>
+            </a>
           </div>
         </div>
       </div>

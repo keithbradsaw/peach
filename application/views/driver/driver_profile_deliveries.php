@@ -1,9 +1,9 @@
 <?php
-$user_id=$this->session->userdata('user_id');
+$driver_id=$this->session->userdata('driver_id');
 
-if(!$user_id){
+if(!$driver_id){
 
-  redirect('user/login_view');
+  redirect('driver/driver_login');
 }
 
  ?>
@@ -123,11 +123,11 @@ body {
   </head>
 <body>
     <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-      <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">GoShopping</a>
+      <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Peach</a>
       
       <ul class="navbar-nav px-3">
         <li class="nav-item text-nowrap">
-          <a class="nav-link" href="<?php echo base_url('user/user_logout'); ?>">Sign out</a>
+          <a class="nav-link" href="<?php echo base_url('driver/driver_logout'); ?>">Sign out</a>
         </li>
       </ul>
     </nav>
@@ -138,39 +138,15 @@ body {
           <div class="sidebar-sticky">
             <ul class="nav flex-column">
               <li class="nav-item">
-                <a class="nav-link active" href="<?php echo base_url('user/user_profile'); ?>">
+                <a class="nav-link" href="<?php echo base_url('driver/driver_profile'); ?>">
                   <span data-feather="home"></span>
                   Account Overview <span class="sr-only">(current)</span>
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="<?php echo base_url('user/user_profile_orders/');echo $user_id;  ?>">
+                <a class="nav-link active" href="<?php echo base_url('driver/driver_profile_deliveries/');echo $driver_id;  ?>">
                   <span data-feather="file"></span>
-                  Past Orders
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="<?php echo base_url('user/user_profile_address/'); echo $user_id;  ?>">
-                  <span data-feather="shopping-cart"></span>
-                  Delivery Address
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="<?php echo base_url('user/user_profile_payment_details/'); echo $user_id; ?>">
-                  <span data-feather="credit-card"></span>
-                  Payment Details
-                </a>
-              </li>
-            </ul>
-
-            <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-              <span>The Store</span>
-            </h6>
-            <ul class="nav flex-column mb-2">
-              <li class="nav-item">
-                <a class="nav-link" href="<?php echo base_url('shop/shop_index'); ?>">
-                  <span data-feather="shopping-bag"></span>
-                  Start Shopping
+                 Available Deliveries
                 </a>
               </li>
             </ul>
@@ -178,29 +154,37 @@ body {
         </nav>
 
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-          <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-            <h1 class="h2">Account Overview</h1>
-
+       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+            <h1 class="h2">Available Deliveries</h1>
           </div>
-           <table class="table table-bordered table-striped">
-          <tr>
-            <td>Full Name</td>
-            <td><?php echo $this->session->userdata('user_full_name'); ?></td>
-          </tr>
-          <tr>
-            <td>Email Address</td>
-            <td><?php echo $this->session->userdata('user_email_address');  ?></td>
-          </tr>
-          <tr>
-            <td>Age</td>
-            <td><?php echo $this->session->userdata('user_age');  ?></td>
-          </tr>
-          <tr>
-            <td>Mobile Number</td>
-            <td>+353<?php echo $this->session->userdata('user_phone_number');  ?></td>
-          </tr>
 
-      </table>
+      <table class="table">
+  <thead class="thead-dark">
+    <tr>
+    <!--Order No will be a combination of theorder ids  -->
+      <th scope="col">Order Number</th>
+      <th scope="col">Order Price</th>
+      <th scope="col">Destination(Eircode)</th>
+      <th scope="col">Delivery Frequency</th>
+      <th scope="col">Customer</th>
+    </tr>
+  </thead>
+  <?php foreach ($available_orders as $order) { 
+   
+    ?>
+      
+  <tbody>
+    <tr>
+      <th scope="row"><?php echo $order['order_id'];?></th>
+      <td>€<?php echo $order['total_payable'];?></td>
+      <td class=""><?php echo $order['eircode'];?></td>
+      <td><?php echo $order['frequency'];?></td>
+      <td><?php echo $order['user_full_name'];?></td>
+    </tr>
+  </tbody>
+<?php  } ?>
+</table>
+
         </main>
       </div>
     </div>

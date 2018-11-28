@@ -144,9 +144,9 @@ body {
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="<?php echo base_url('driver/driver_profile_orders/');echo $driver_id;  ?>">
+                <a class="nav-link" href="<?php echo base_url('driver/driver_profile_deliveries/');echo $driver_id;  ?>">
                   <span data-feather="file"></span>
-                  Past Orders
+                 Available Deliveries
                 </a>
               </li>
             </ul>
@@ -177,25 +177,22 @@ body {
           </tr>
 
       </table>
-
-       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-            <h1 class="h2">Available Deliveries</h1>
+      <div class="row match-height">
+    <div class="col-md-6 col-sm-12">
+      <div class="card border-secondary text-center" style="height: 313.563px;">
+        <div class="card-content">
+          <div class="card-body">
+          <br>
+          <br>
+            <h2 class="card-title">Completed Deliveries</h2>
+            <h4 class="card-title">Currently No Deliveries Completed</h4>
+            <a href="<?php echo base_url('driver/driver_profile_deliveries/');echo $driver_id; ?>">
+            <button class="btn btn-outline-success my-2">View Available Deliveries</button>
+            </a>
           </div>
-
-      <table class="table">
-  <thead class="thead-dark">
-    <tr>
-    <!--Order No will be a combination of theorder ids  -->
-      <th scope="col">Order Number</th>
-      <th scope="col">Order Price</th>
-      <th scope="col">Destination</th>
-      <th scope="col">Delivery Frequency</th>
-      <th scope="col">Customer</th>
-    </tr>
-  </thead>
-  <tbody>
-  </tbody>
-</table>
+        </div>
+      </div>
+    </div>
 
         </main>
       </div>

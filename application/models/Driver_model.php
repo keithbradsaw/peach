@@ -35,9 +35,21 @@ public function login_driver($email,$pass){
   else{
     return false;
   }
-
-
 }
 
+public function list_available_orders(){
+
+$this->db->select('*');
+$this->db->join('user', 'user.user_id = order.user_id');
+$this->db->join('user_address', 'user_address.user_id = order.user_id');
+$this->db->from('order');
+   $query = $this->db->get();
+    return $query->result_array();
+  // $this->db->select('a.order_id, a.user_id, a.total_payable, a.frequency, b.user_full_name, b.user_id, c.user_id, c.eircode');
+  //  $this->db->join('user b', 'b.user_id = a.user_id', 'c.user_id = b.user_id' );
+  // $this->db->where('status','Waiting for driver to collect');
+   $query = $this->db->get();
+    return $query->result_array();
+}
 }
 ?>
