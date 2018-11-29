@@ -92,6 +92,21 @@ $data['available_orders']=$this->driver_model->list_available_orders();
     $this->load->view('templates/footer');
 }
 
+public function driver_adding_to_delivery(){
+ $deliveryInfo= $this->input->post('deliveryInfo');
+
+$driverid=$deliveryInfo['driver_id'];
+$order_id=$deliveryInfo['order_id'];
+ // echo $driverid;
+  //print_r($info);
+$this->driver_model->assign_driver_to_order($driverid, $order_id);
+}
+public function driver_begin_delivery(){
+$driver_id=$this->session->userdata('driver_id');
+  $data=$this->driver_model->list_selected_orders($driver_id);
+print_r($data);
+}
+
 public function driver_logout(){
 
   $this->session->sess_destroy();

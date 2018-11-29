@@ -197,8 +197,10 @@ body {
   <?php foreach ($orders as $order) { 
     if($order['status'] =="Waiting for driver to collect"){
       $orderStatus="text-warning";
-    }elseif($order['status'] =="Delivery In Progress"){
+    }elseif($order['status'] =="Driver Has Begun Delivery"){
       $orderStatus="text-success";
+    }else{
+      $orderStatus=" ";
     }
     ?>
       
@@ -206,7 +208,7 @@ body {
     <tr>
       <th scope="row"><?php echo $order['order_id'];?></th>
       <td>€<?php echo $order['total_payable'];?></td>
-      <td class="<?php echo $orderStatus; ?>"><?php echo $order['status'];?></td>
+      <td class="<?php echo $orderStatus ?>"><?php echo $order['status'];?></td>
       <td><?php echo $order['frequency'];?></td>
       <td>Not Assigned</td>
     </tr>
