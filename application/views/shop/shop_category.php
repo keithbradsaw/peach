@@ -1,3 +1,12 @@
+<style type="text/css">
+  
+  .card{
+  margin-bottom: 1.875rem;
+  border-radius: 0;
+  box-shadow: 0 10px 40px 0 rgba(62, 57, 107, 0.07), 0 2px 9px 0 rgba(62, 57, 107, 0.06);
+}
+</style>
+
     <header>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
@@ -24,6 +33,7 @@
     </header>
 <?php $categoryid= $this->uri->segment(3); ?>
    <div class="container">
+   <h2 class="text-center" >Choose From The Products below</h2>
     <div class="row">
 <?php foreach($categoryProducts as $product): ?>
                   <div class="col-12 col-md-6 col-lg-4">

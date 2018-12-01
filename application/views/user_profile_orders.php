@@ -210,7 +210,7 @@ body {
       <td>€<?php echo $order['total_payable'];?></td>
       <td class="<?php echo $orderStatus ?>"><?php echo $order['status'];?></td>
       <td><?php echo $order['frequency'];?></td>
-      <td>Not Assigned</td>
+      <td><?php echo $order['driver_full_name'];?></td>
     </tr>
   </tbody>
 <?php  } ?>

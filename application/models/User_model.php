@@ -93,11 +93,20 @@ public function update_PaymentDetails($id, $paymentDetails){
 }
 
 public function display_user_orders($user_id){
-  $this->db->select('order_id, total_payable, status, frequency');
-  $this->db->from('order');
-  $this->db->where('user_id',$user_id);
-   $query = $this->db->get();
-    return $query->result_array();
+
+$this->db->select('order.*,driver.*');
+$this->db->from('order');
+$this->db->join('driver', 'order.driver_id = driver.driver_id', 'left'); 
+$this->db->where('user_id',$user_id);
+$query = $this->db->get();
+return $query->result_array();
+
+  // $this->db->select('order_id, total_payable, status, frequency');
+  // $this->db->join('user', 'user.user_id = order.user_id');
+  // $this->db->from('order');
+  // $this->db->where('user_id',$user_id);
+  //  $query = $this->db->get();
+  //   return $query->result_array();
 
 }
 
