@@ -105,16 +105,18 @@ public function address_view(){
 }
 
 function user_address(){
+
 $user_address=array(
   'user_id'=>$this->input->post('user_id'),
   'street'=>$this->input->post('street'),
   'county'=>$this->input->post('county'),
   'eircode'=>$this->input->post('eircode'),
-  'country'=>$this->input->post('country')
- 
+  'country'=>$this->input->post('country'),
+'latitude'=>$this->input->post('latitude'),
+'longitude'=>$this->input->post('longitude')
     );
-print_r($user_address);
-$this->user_model->add_address($user_address);
+//print_r($user_address);
+//$this->user_model->add_address($user_address);
 
 redirect('user/payment_view');
 }

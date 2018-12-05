@@ -7,10 +7,14 @@ background-color: #9e9e9e0f;
 }
 
 .jumbotron {
-  padding-top: var(--jumbotron-padding-y);
-  padding-bottom: var(--jumbotron-padding-y);
-  margin-bottom: 0;
+
+padding: 30px 15px;
+  margin-bottom: 10px;
+  color: inherit;
   background-color: #fff;
+  text-align: center;
+  background-size: cover;
+
 }
 @media (min-width: 768px) {
   .jumbotron {
@@ -147,7 +151,7 @@ if(!$user_id){
       <div class="card border-secondary text-center " style="height: 313.563px;">
         <div class="card-content">
           <div class="card-body">
-            <img src="<?php echo base_url('../../assets/images/FreshPears7Pack_image.png') ?>" alt="element 02" width="225" class="mb-1">
+            <img src="<?php echo base_url('../../assets/images/cereal_image.png') ?>" alt="element 02" width="225"class="mb-1">
             <h3 class="card-title">Food Cupboard</h3>
             <p class="card-text">Cereals, Canned food and Pasta.</p>
             <a href="<?php echo base_url('shop/shop_category_items/'); ?>3">
@@ -191,7 +195,7 @@ if(!$user_id){
           <div class="card-body">
             <img src="<?php echo base_url('../../assets/images/hand_cream_image.png') ?>" alt="element 02" width="225" class="mb-1">
             <h3 class="card-title">Health &amp; Beauty</h3>
-            <p class="card-text">Fruit, Vegetables & Meat.</p>
+            <p class="card-text">Vitamins, Make-up and Childrens Products</p>
             <a href="<?php echo base_url('shop/shop_category_items/'); ?>6">
             <button class="btn btn-outline-success my-2">View Products</button>
             </a>
@@ -315,9 +319,43 @@ if(!$user_id){
 
             </div> --><!-- end of row -->
             
-        <h2 class="text-center" style="color: #212529;">Current Offers</h2>
+        <h2 class="text-center" style="color: #212529;">Christmas Offers  <span data-feather="gift"></span>
+</h2>
         <hr>
-        <hr>
+        <div class="row">
+            <div class="col-md-6 col-sm-12">
+      <div class="card border-secondary text-center" style="height: 313.563px;">
+        <div class="card-content">
+          <div class="card-body">
+            <img src="<?php echo base_url('../../assets/images/galaxy.png') ?>" alt="element 02" width="225" class="mb-1">
+            <br>
+            <br>
+            <h3 class="card-title">Galaxy Large Selection Box</h3>
+            <p class="card-text">Price: €6.80</p>
+            <a href="<?php echo base_url('shop/shop_category_items/'); ?>5">
+            <button class="btn btn-outline-success my-2">View Product</button>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 col-sm-12">
+      <div class="card border-secondary text-center" style="height: 313.563px;">
+        <div class="card-content">
+          <div class="card-body">
+          <br>
+            <img src="<?php echo base_url('../../assets/images/mince-pies.png') ?>" alt="element 02" width="225" class="mb-1">
+            <h3 class="card-title">6 Mince Pies</h3>
+            <p class="card-text">Price: €2.85</p>
+            <a href="<?php echo base_url('shop/shop_category_items/'); ?>6">
+            <button class="btn btn-outline-success my-2">View Product</button>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
  <!--       <div class="row">
              <div class="col-md-4">
               <div class="card mb-4 shadow-sm">

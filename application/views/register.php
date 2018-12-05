@@ -30,16 +30,16 @@
                 <div class="card-img-overlay"> <span class="badge badge-pill badge-danger">Step1.</span> </div>
                 <div class="card-body">
             <div class="news-title">
-                    <h2 class=" title-small"><a>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed placerat lobortis augue in finibus. Praesent interdum, turpis eget dignissim elementum, mi leo venenatis velit, a suscipit libero erat vitae arcu.</a></h2>
+                    <h2 class=" title-small"><a>Follow the registeration process to make an account</a></h2>
                   </div>
             
           </div>
               </div>
         <div class="card"> <!-- <img class="img-fluid" src="http://grafreez.com/wp-content/temp_demos/river/img/travel.jpg" alt=""> -->
-                <div class="card-img-overlay"> <span class="badge badge-pill badge-danger">Step2.</span> </div>
+                <div class="card-img-overlay"> <span class="badge badge-pill badge-danger">Step3.</span> </div>
                 <div class="card-body">
             <div class="news-title">
-                    <h2 class=" title-small"><a>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed placerat lobortis augue in finibus. Praesent interdum, turpis eget dignissim elementum, mi leo venenatis velit, a suscipit libero erat vitae arcu.</a></h2>
+                    <h2 class=" title-small"><a>Add everything you need to your cart and set your delivery frequency.</a></h2>
                   </div>
            
           </div>
@@ -47,10 +47,10 @@
       </div>
             <div class="col-md-3"  style="padding-top: 35px;">
         <div class="card"> <!-- <img class="img-fluid" src="http://grafreez.com/wp-content/temp_demos/river/img/business1.jpg" alt=""> -->
-                <div class="card-img-overlay"> <span class="badge badge-pill badge-danger">Step3.</span> </div>
+                <div class="card-img-overlay"> <span class="badge badge-pill badge-danger">Step2.</span> </div>
                 <div class="card-body">
             <div class="news-title">
-                    <h2 class=" title-small"><a>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed placerat lobortis augue in finibus. Praesent interdum, turpis eget dignissim elementum, mi leo venenatis velit, a suscipit libero erat vitae arcu.</a></h2>
+                    <h2 class=" title-small"><a>Log In and view all the items in the store.</a></h2>
                   </div>
             
           </div>
@@ -59,7 +59,7 @@
                 <div class="card-img-overlay"> <span class="badge badge-pill badge-danger">Step4.</span> </div>
                 <div class="card-body">
             <div class="news-title">
-                    <h2 class=" title-small"><a>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed placerat lobortis augue in finibus. Praesent interdum, turpis eget dignissim elementum, mi leo venenatis velit, a suscipit libero erat vitae arcu.</a></h2>
+                    <h2 class=" title-small"><a>Sit back and your groceries will arrive soon, whether its a once off delivery or multiple this month.</a></h2>
                   </div>
             
           </div>

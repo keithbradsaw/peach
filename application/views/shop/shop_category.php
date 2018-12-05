@@ -5,6 +5,13 @@
   border-radius: 0;
   box-shadow: 0 10px 40px 0 rgba(62, 57, 107, 0.07), 0 2px 9px 0 rgba(62, 57, 107, 0.06);
 }
+.row-eq-height {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display:         flex;
+}
+
 </style>
 
     <header>
@@ -34,16 +41,19 @@
 <?php $categoryid= $this->uri->segment(3); ?>
    <div class="container">
    <h2 class="text-center" >Choose From The Products below</h2>
-    <div class="row">
+   <br>
+   <div class="container">
+   <div class="card-deck">
 <?php foreach($categoryProducts as $product): ?>
-                  <div class="col-12 col-md-6 col-lg-4">
+                  
+                  
                     <div class="card">
-                        <img class="card-img-top" src="<?php echo base_url('../../assets/images/').$product['product_image']; ?>" alt="Card image cap">
+                        <img class="card-img-top img-fluid" src="<?php echo base_url('../../assets/images/').$product['product_image']; ?>" alt="Card image cap">
                         <div class="card-body">
                             <h4 class="card-title"><a href="<?php echo base_url('shop/Get_product_by_id/').$product['product_id']."/".$categoryid ?>" title="View Product">
                             <?php echo $product['product_name'] ?></a>
                             </h4>
-                            <p class="card-text"><?php echo substr($product['product_long_desc'], 0, 255); ?></p>
+                            <p class="card-text"><?php echo substr($product['product_long_desc'], 0,80 ); ?>...</p>
                             <div class="">
                                 <div class="col-12">
                                     <p class="btn btn-success btn-block">Price: €<?php echo $product['product_price'] ?></p>
@@ -54,10 +64,13 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                    
+           
                     <?php endforeach ?>
+                    </div>
   </div>
   </div>
+ 
 
      <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
     <script>

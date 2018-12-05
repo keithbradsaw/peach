@@ -103,8 +103,11 @@ $this->driver_model->assign_driver_to_order($driverid, $order_id);
 }
 public function driver_begin_delivery(){
 $driver_id=$this->session->userdata('driver_id');
-  $data=$this->driver_model->list_selected_orders($driver_id);
-print_r($data);
+  $data['addresses']=$this->driver_model->list_selected_orders($driver_id);
+      $this->load->view('templates/header');
+    $this->load->view("driver/driver_begin_delivery.php",$data);
+    $this->load->view('templates/footer');
+//print_r($data);
 }
 
 public function driver_logout(){

@@ -149,13 +149,14 @@ h3 {
                                 <div class="input-group">
                                     <input id="card_cvv" name="card_cvv" type="tel" class="form-control" value="" placeholder="3 Digit Code on Back Of card" required>
                                 </div>
-                            </div>
-                        </div>
-                        <div>
-                            <button id="payment-button" type="submit" class="btn btn-lg btn-success btn-block">
+                                <button id="payment-button" type="submit" class="btn btn-lg btn-success btn-block">
                                 <i class="fa fa-lock fa-lg"></i>&nbsp;
                                 <span id="payment-button-amount">Complete Signup</span>
                             </button>
+                            </div>
+                        </div>
+                        <div>
+                            
                         </div>
                     </form>
                 </div><!--My Form-->

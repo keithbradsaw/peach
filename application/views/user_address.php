@@ -97,6 +97,8 @@ h3 {
 }
 
 </style>
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
   <body>
 <div class="container">
@@ -118,7 +120,7 @@ h3 {
                     <br>
             <div  class="myForm">
    
-                    <form action="<?php echo base_url('user/user_address'); ?>" method="post" >
+                    <form id="myForm" action="<?php echo base_url('user/user_address'); ?>" method="post" >
                    
                 <h2 class="text-center">Add Your Delivery Address</h2>
               
@@ -145,16 +147,22 @@ h3 {
                                 <div class="input-group">
                                     <input id="country" name="country" type="text" class="form-control" value="">
                                 </div>
-                            </div>
-                        </div>
-                        <div>
-                            <button id="payment-button" type="submit" class="btn btn-lg btn-success btn-block">
+                                <br>
+                                    <button id="payment-button" class="btn btn-lg btn-success btn-block" >
                                 <i class="fa fa-lock fa-lg"></i>&nbsp;
                                 <span id="payment-button-amount">Next Step</span>
                             </button>
+                            </div>
+                            <input type="hidden" id="latitude" name="latitude" value="" />
+                            <input type="hidden" id="longitude" name="longitude" value="" />
+
+                        
+                        </div>
+                        <div>
                         </div>
                     </form>
                 </div><!--My Form-->
+
           </div>
       </div>
     </div>
@@ -165,3 +173,58 @@ h3 {
     <script>
       feather.replace()
     </script>
+<script>
+//First we get the eircode Value
+//THen Assign the geo Locations
+//THen Submit Form
+$('#myForm').submit(function(e){
+    e.preventDefault();
+    var eircode = document.getElementById("eircode").value; 
+var location=eircode+"+ire";
+geocode(location);
+
+  });
+
+// function eircodeToGeo(){
+// var eircode = document.getElementById("eircode").value; 
+// var location=eircode+"+ire";
+// geocode(location);
+
+// }
+
+
+
+  
+
+
+
+
+  function geocode(location){
+   axios.get('https://maps.googleapis.com/maps/api/geocode/json',{
+     params:{
+       address: location,
+       key:'AIzaSyA9CZH-s3lLoi-aFiWykonbIlRx1HfItWM'
+     }
+   })
+   .then(function(response){
+   //Logging the response
+  console.log(response);
+    
+   //Getting the geolocation
+   var lats =response.data.results[0].geometry.location.lat;
+   var lngs = response.data.results[0].geometry.location.lng;
+
+ $('#latitude').val(lats); 
+  $('#longitude').val(lngs);
+   $('#myForm').submit();
+
+
+
+//alert(lats+"  "+lngs);
+ //console.log(lngs);
+   })
+   .catch(function(error){
+   alert(error);
+   });
+ };
+</script>
