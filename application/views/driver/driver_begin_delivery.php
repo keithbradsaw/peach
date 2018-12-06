@@ -15,20 +15,186 @@ if(!$driver_id){
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
-
-
     <title>GoShopping.ie</title>
-<style type="text/css">
-	#map{
-		height:400px;
-		width:100%;
-	}
-</style>
+      <style type="text/css">
+body {
+  font-size: .875rem;
+}
+
+.feather {
+  width: 16px;
+  height: 16px;
+  vertical-align: text-bottom;
+}
+
+/*
+ * Sidebar
+ */
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 100; /* Behind the navbar */
+  padding: 48px 0 0; /* Height of navbar */
+  box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
+}
+
+.sidebar-sticky {
+  position: relative;
+  top: 0;
+  height: calc(100vh - 48px);
+  padding-top: .5rem;
+  overflow-x: hidden;
+  overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+}
+
+@supports ((position: -webkit-sticky) or (position: sticky)) {
+  .sidebar-sticky {
+    position: -webkit-sticky;
+    position: sticky;
+  }
+}
+
+.sidebar .nav-link {
+  font-weight: 500;
+  color: #333;
+}
+
+.sidebar .nav-link .feather {
+  margin-right: 4px;
+  color: #999;
+}
+
+.sidebar .nav-link.active {
+  color: #007bff;
+}
+
+.sidebar .nav-link:hover .feather,
+.sidebar .nav-link.active .feather {
+  color: inherit;
+}
+
+.sidebar-heading {
+  font-size: .75rem;
+  text-transform: uppercase;
+}
+
+/*
+ * Content
+ */
+
+[role="main"] {
+  padding-top: 48px; /* Space for fixed navbar */
+}
+
+/*
+ * Navbar
+ */
+
+.navbar-brand {
+  padding-top: .75rem;
+  padding-bottom: .75rem;
+  font-size: 1rem;
+  background-color: rgba(0, 0, 0, .25);
+  box-shadow: inset -1px 0 0 rgba(0, 0, 0, .25);
+}
+
+.navbar .form-control {
+  padding: .75rem 1rem;
+  border-width: 0;
+  border-radius: 0;
+}
+
+.form-control-dark {
+  color: #fff;
+  background-color: rgba(255, 255, 255, .1);
+  border-color: rgba(255, 255, 255, .1);
+}
+
+.form-control-dark:focus {
+  border-color: transparent;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, .25);
+
+}
+  #map{
+    height:400px;
+    width:100%;
+  }
+  .card {
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
+  </style>
   </head>
   <body>
 
+    <div class="container-fluid">
+      <div class="row">
+        <nav class="col-md-3 d-none d-md-block sidebar">
+                  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 ">
+            <h1 class="h2 ml-2">Your Deliveries</h1>
+
+          </div>
+          <div class="sidebar-sticky">
+          <!--Php to loop through each order and display the information to the driver -->
+                    <?php foreach($addresses as $address){?>
+            <div class="card card-inverse card-info m-3">
+                    <div class="card-block">
+                        <h4 class="card-title m-3"><?php echo $address['user_full_name']?></h4>
+                        <div class="meta card-text m-3">
+                            <a><?php echo $address['street']?></a>
+                        </div>
+                        <div class="meta card-text m-3">
+                            <button class="btn btn-outline-info  btn-sm">Call Customer</button>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <small>Delivery Frequency:<br><?php echo $address['frequency']?></small>
+                        <button class="btn btn-success float-right btn-sm">Complete Delivery</button>
+                    </div>
+              </div>
+                <?php } ?>
+<!--             <div class="card card-inverse card-info border-secondary  m-3">
+                    <div class="card-block">
+                        <h4 class="card-title m-3">Customer Name</h4>
+                        <div class="meta card-text m-3">
+                            <a>Address</a>
+                        </div>
+                        <div class="meta card-text m-3">
+                            <button class="btn btn-outline-info  btn-sm">Call Customer</button>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <small>Deliveries Per Month:</small>
+                        <button class="btn btn-success float-right btn-sm">Complete Delivery</button>
+                    </div>
+              </div> -->
+
+          </div><!-- SideBar Sticky -->
+        </nav>
+    <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+      <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Peach</a>
+      
+      <ul class="navbar-nav px-3">
+        <li class="nav-item text-nowrap">
+          <a class="nav-link" href="<?php echo base_url('driver/driver_logout'); ?>">Sign out</a>
+        </li>
+      </ul>
+    </nav>
+        <main role="main" class="col-md-8 ml-sm-auto col-lg-9 px-4">
+          <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
+            
+
+          </div>
   <div id="map"></div>
+</main>
+      </div>
+    </div>
+
+
+
+
 <?php 
 $addressArr=array();
 foreach($addresses as $address){
@@ -73,7 +239,7 @@ var map = new google.maps.Map(document.getElementById('map'), {
 for (var i = 0; i < parsedLength; i++) {
   var lat = parsed[i].lat;
   var lng = parsed[i].lng;
-  
+
   console.log(i, lat, lng);
   var marker = new google.maps.Marker({
     map: map,
