@@ -9,13 +9,6 @@ if(!$driver_id){
  ?>
  <html>
   <head>
-  <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <title>GoShopping.ie</title>
       <style type="text/css">
 body {
   font-size: .875rem;
@@ -132,8 +125,9 @@ body {
     <div class="container-fluid">
       <div class="row">
         <nav class="col-md-3 d-none d-md-block sidebar">
-                  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 ">
-            <h1 class="h2 ml-2">Your Deliveries</h1>
+                  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 border-bottom">
+            <h1 class="h2 ml-3">Your Deliveries</h1>
+
 
           </div>
           <div class="sidebar-sticky">
@@ -174,8 +168,7 @@ body {
           </div><!-- SideBar Sticky -->
         </nav>
     <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-      <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Peach</a>
-      
+      <a class="navbar-brand col-sm-3 col-md-3 mr-0" href="<?php echo base_url('driver/driver_profile'); ?>">GoShopping</a>
       <ul class="navbar-nav px-3">
         <li class="nav-item text-nowrap">
           <a class="nav-link" href="<?php echo base_url('driver/driver_logout'); ?>">Sign out</a>
@@ -188,6 +181,10 @@ body {
 
           </div>
   <div id="map"></div>
+  <div id="control_panel" >
+<div id="directions_panel">
+  <h1 class="h2 ml-3">Route Breakdown</h1>
+</div>
 </main>
       </div>
     </div>
@@ -200,9 +197,12 @@ $addressArr=array();
 foreach($addresses as $address){
  //echo "User Id:".$address['user_id']."LAT:".$address['latitude']."LONG:".$address['longitude'] ;
   $myArray=array(
+    'street'=>$address['street'],
+    'county'=>$address['county'],
+    'eircode'=>$address['eircode'],
     'lat'=>$address['latitude'],
     'lng'=>$address['longitude'],
-    'customer'=>$address['user_id']
+    'customer'=>$address['user_full_name']
     );
   array_push($addressArr, $myArray);
 }
@@ -220,13 +220,17 @@ foreach($addresses as $address){
 
 <script>
  function initMap(){
-      
+  var directionsService = new google.maps.DirectionsService;
+  var directionsDisplay = new google.maps.DirectionsRenderer;
+
+      //Assign & Parse the PHP info for the Map from the DB
 var MapDetails= '<?php echo $infoForMap;?>';
 var parsed=JSON.parse(MapDetails);
 var parsedLength=parsed.length;
-console.log(parsed.length);
+var endParsed= (parsedLength -1);
+// console.log(parsed[0].street);
 
-
+//Initialising the map with a focus on Dublin
 var map = new google.maps.Map(document.getElementById('map'), {
   center: {
     lat: 53.3440,
@@ -234,22 +238,98 @@ var map = new google.maps.Map(document.getElementById('map'), {
   },
   zoom: 8
 });
+ directionsDisplay.setMap(map);
+ var waypts = [];
+ //Loop Through and set waypoints excluding the first and last 
+        for (var i = 0; i <= endParsed-1; i++) {
+            street = parsed[i].street;
+            county = parsed[i].county;
+
+            waypts.push({
+              location: street+" "+county,
+              stopover: true
+            });
+
+        }
 
 
-for (var i = 0; i < parsedLength; i++) {
-  var lat = parsed[i].lat;
-  var lng = parsed[i].lng;
+//console.log(waypts);
+//Destination 
+EndDest =parsed[endParsed].street+" "+parsed[endParsed].county;
+console.log(EndDest);
+    var request = {
+        origin: "St. Margaret's Road, Ballymun, Dublin, D11 FN84",
+       destination: EndDest,
+        waypoints: waypts,
+          optimizeWaypoints: true,
+          travelMode: 'DRIVING'
+    };
 
-  console.log(i, lat, lng);
-  var marker = new google.maps.Marker({
-    map: map,
-    position: {
-      lat: parseFloat(lat),
-      lng: parseFloat(lng)
-    },
-    title: 'Hello World!'
-  });
-};
+ directionsService.route(request, function(response, status) {
+      if (status == google.maps.DirectionsStatus.OK) {
+        directionsDisplay.setDirections(response);
+        var route = response.routes[0];
+        var summaryPanel = document.getElementById("directions_panel");
+        // summaryPanel.innerHTML = "";
+        // For each route, display summary information.
+        for (var i = 0; i < route.legs.length; i++) {
+          var routeSegment = i + 1;
+          summaryPanel.innerHTML += "<b>Route Segment: " + routeSegment + "</b><br />";
+          summaryPanel.innerHTML += route.legs[i].start_address + " to ";
+          summaryPanel.innerHTML += route.legs[i].end_address + "<br />";
+          summaryPanel.innerHTML += "Expected Travel Time: " +route.legs[i].duration.text + "<br /><br />";
+        }
+      } else {
+        alert(status);
+      }
+    });
+  
+
+ // var waypts = [];
+ // //Loop Through and set waypoints excluding the first and last 
+ //        for (var i = 1; i < (endParsed-1); i++) {
+ //           var lat = parsed[i].lat;
+ //           var lng = parsed[i].lng;
+ //            waypts.push({
+ //              position: {lat: parseFloat(lat), lng: parseFloat(lng)},
+ //              stopover: true
+ //            });
+
+ //        }
+
+// directionsService.route({
+//           origin: document.getElementById('start').value,
+//           destination: document.getElementById('end').value,
+//           waypoints: waypts,
+//           optimizeWaypoints: true,
+//           travelMode: 'DRIVING'
+//         }, function(response, status) {
+//           if (status === 'OK') {
+//             directionsDisplay.setDirections(response);
+//             var route = response.routes[0];
+//           }else{
+//             window.alert('Directions request failed due to ' + status);
+//           }
+//         });
+
+
+//Loop For Markers and display the distinct locations
+
+// for (var i = 0; i < parsedLength; i++) {
+//   var lat = parsed[i].lat;
+//   var lng = parsed[i].lng;
+//   var name = parsed[i].customer;
+//   console.log(i, lat, lng);
+
+//   var marker = new google.maps.Marker({
+//     map: map,
+//     position: {
+//       lat: parseFloat(lat),
+//       lng: parseFloat(lng)
+//     },
+//     title: name
+//   });
+// };
 
  // Check content
     //     if(props.content){
@@ -351,6 +431,8 @@ for (var i = 0; i < parsedLength; i++) {
     // }
 }
   </script>
- <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA9CZH-s3lLoi-aFiWykonbIlRx1HfItWM&callback=initMap"></script>
-
+  <!-- Script Used For Maps-->
+<!--  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA9CZH-s3lLoi-aFiWykonbIlRx1HfItWM&callback=initMap"></script> -->
+ <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA9CZH-s3lLoi-aFiWykonbIlRx1HfItWM&libraries=places&callback=initMap"
+        async defer></script> 
   </body>

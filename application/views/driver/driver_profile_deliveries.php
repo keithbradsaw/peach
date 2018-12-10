@@ -145,7 +145,7 @@ body {
               </li>
               <li class="nav-item">
                 <a class="nav-link active" href="<?php echo base_url('driver/driver_profile_deliveries/');echo $driver_id;  ?>">
-                  <span data-feather="file"></span>
+                  <span data-feather="truck"></span>
                  Available Deliveries
                 </a>
               </li>

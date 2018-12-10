@@ -123,7 +123,7 @@ body {
   </head>
 <body>
     <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-      <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Peach</a>
+      <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">GoShopping</a>
       
       <ul class="navbar-nav px-3">
         <li class="nav-item text-nowrap">
@@ -145,7 +145,7 @@ body {
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="<?php echo base_url('driver/driver_profile_deliveries/');echo $driver_id;  ?>">
-                  <span data-feather="file"></span>
+                  <span data-feather="truck"></span>
                  Available Deliveries
                 </a>
               </li>

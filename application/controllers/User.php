@@ -116,7 +116,7 @@ $user_address=array(
 'longitude'=>$this->input->post('longitude')
     );
 //print_r($user_address);
-//$this->user_model->add_address($user_address);
+$this->user_model->add_address($user_address);
 
 redirect('user/payment_view');
 }
