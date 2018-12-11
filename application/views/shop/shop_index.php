@@ -7,7 +7,7 @@ background-color: #9e9e9e0f;
 }
 
 .jumbotron {
-
+background: url(<?php echo base_url('../../assets/images/christmas.jpg') ?>) no-repeat center center;
 padding: 30px 15px;
   margin-bottom: 10px;
   color: inherit;
@@ -28,7 +28,9 @@ padding: 30px 15px;
 }
 
 .jumbotron-heading {
-  font-weight: 300;
+  font-weight: 600;
+  color: #fff;
+  text-shadow: 0 1px 0 black;
 }
 
 .jumbotron .container {
@@ -62,6 +64,9 @@ padding: 50px;
   margin-bottom: 1.875rem;
   border-radius: 0;
   box-shadow: 0 10px 40px 0 rgba(62, 57, 107, 0.07), 0 2px 9px 0 rgba(62, 57, 107, 0.06);
+}
+h2{
+  text-shadow: 0 1px 0 black;
 }
 }
   </style>
@@ -104,19 +109,20 @@ if(!$user_id){
 
       <section class="jumbotron text-center">
         <div class="container">
-          <h1 class="jumbotron-heading">Featured Item</h1>
+
+          <h1 class="jumbotron-heading mt-3">Christmas Range</h1>
           <p class="lead text-muted">
 
         </p>
           <p>
-            <a href="#" class="btn btn-outline-secondary my-2">View</a>
+            <a href="<?php echo base_url('shop/shop_category_items/'); ?>7" class="btn btn-outline-light my-2">View</a>
           </p>
         </div>
       </section>
 
       <div class="album py-5">
         <div class="container">
-        <h2 class="text-center" >Choose From Our Categories</h2>
+        <h2 class="text-center">Choose From Our Categories</h2>
         <hr>
         <div class="row match-height">
     <div class="col-md-6 col-sm-12">
@@ -179,7 +185,7 @@ if(!$user_id){
       <div class="card border-secondary text-center" style="height: 313.563px;">
         <div class="card-content">
           <div class="card-body">
-            <img src="<?php echo base_url('../../assets/images/ariel_image.png') ?>" alt="element 02" width="225" class="mb-1">
+            <img src="<?php echo base_url('../../assets/images/36 600x400.png') ?>" alt="element 02" width="225" class="mb-1 ">
             <h3 class="card-title">Household Goods</h3>
             <p class="card-text">Washing Detergent, Soap and Shower Gels</p>
             <a href="<?php echo base_url('shop/shop_category_items/'); ?>5">
@@ -327,12 +333,12 @@ if(!$user_id){
       <div class="card border-secondary text-center" style="height: 313.563px;">
         <div class="card-content">
           <div class="card-body">
-            <img src="<?php echo base_url('../../assets/images/galaxy.png') ?>" alt="element 02" width="225" class="mb-1">
+            <img src="<?php echo base_url('../../assets/images/galaxy_image.png') ?>" alt="element 02" width="225" class="mb-1">
             <br>
             <br>
             <h3 class="card-title">Galaxy Large Selection Box</h3>
             <p class="card-text">Price: €6.80</p>
-            <a href="<?php echo base_url('shop/shop_category_items/'); ?>5">
+            <a href="<?php echo base_url('shop/Get_product_by_id/')."23/7"?>">
             <button class="btn btn-outline-success my-2">View Product</button>
             </a>
           </div>

@@ -28,7 +28,7 @@
     </header>
     <div class="jumbotron text-center">
     		<h1 class="display-3">Thank you For Your Order</h1>
-    		<h3>You will receive a message once your delivery is on the way.<br>
-            <a href="<?php echo base_url('user/user_profile_orders'); ?>">You can also view your Order Status</a>
+    		<h3>
+        <a href="<?php echo base_url('user/user_profile_orders'); ?>">View Your Orders Status By Clicking Here!</a>
         </h3>
     </div>

@@ -145,48 +145,11 @@ h1 a {
     </div>
 </div><!--End of dropdown for product info -->
 	<div class="container suggested">
-	<h4>Other Items from the <?php echo $productinfo['product_category_name'] ?> category</h4>
+	
 	<div class="row">
-		<div class="col-md-4 col-sm-6">
-			              <div class="card ">
-                <div class="card-img-top">
-                     <!--  <img class="thumbnail" src="<?php echo base_url('../../assets/images/').$productinfo['product_image']; ?>" />
- -->
-                </div>
-                <div class="card-body">
-                <span><?php echo $related['1']['product_name'] ?>
-                </span>
-                <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                
-
-                </div>
-              </div>
-		</div>
-		<div class="col-md-4 col-sm-6">
-					              <div class="card ">
-                <div class="card-img-top">
-                     
-                </div>
-                <div class="card-body">
-                <span>Current Price<h5>&euro; <?php echo $productinfo['product_price'] ?></h5><button type="button" class="btn btn-sm btn-outline-secondary">View</button></span>
-                
-
-                </div>
-              </div>
-		</div>
-		<div class="col-md-4 col-sm-6">
-					              <div class="card ">
-                <div class="card-img-top">
-                     
-                </div>
-                <div class="card-body">
-                <span>Current Price<h5 id="price">&euro; <?php echo $productinfo['product_price'] ?></h5><button type="button" class="btn btn-sm btn-outline-secondary">View</button></span>
-                
-
-                </div>
-              </div>
-		</div>
-	</div>
+<a href="<?php echo base_url('shop/shop_category_items/').$productinfo['product_category_id']; ?>">
+  <button class="btn btn-outline-secondary"><h5>Back to the <?php echo $productinfo['product_category_name'] ?> category</h5></button>
+</a>
 	</div><!--End of suggested -->
     </div>
 	</div>

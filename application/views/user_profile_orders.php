@@ -181,7 +181,12 @@ body {
             <h1 class="h2">Your Orders</h1> <br>
           </div>
           <h5 class="">
-          <a href="<?php echo base_url('shop/shop_index'); ?>">Head to the store</a>
+          <a href="<?php echo base_url('shop/shop_index'); ?>">
+              <button class="btn btn-outline-secondary">
+              <span data-feather="shopping-bag"></span>
+                Head to the store
+              </button>
+              </a>
           </h5>
       <table class="table">
   <thead class="thead-dark">

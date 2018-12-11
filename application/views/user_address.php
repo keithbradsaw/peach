@@ -60,15 +60,15 @@ h3 {
     .steps ul li a {
       text-decoration: none;
       display: block;
-      background: #f8f8f8;
+      background: #fff;
       text-align: center;
       padding: 10px 0; }
     .steps ul li:hover a {
-      background: #1ed760; }
+      background: #28a745; }
       .steps ul li:hover a h3 {
         color: #fff; }
   .steps ul .current a {
-    background: #1ed760; }
+    background: #28a745; }
     .steps ul .current a h3 {
       color: #fff; }
 
@@ -84,17 +84,12 @@ h3 {
         border-radius: 1.1rem;
         outline: 0;
          }
-
-.myform{
-        padding: 1rem;
-        width: 100%;
-        pointer-events: auto;
-        background-color: #F7F7F7;
-        background-clip: padding-box;
-        border: 0.5px solid rgba(0,0,0,.2);
-        border-radius: 1.1rem;
-        outline: 0;
-}
+.box { background-color: #fff; border-radius: 8px; border: 2px solid #e9ebef; padding: 50px; margin-bottom: 40px; }
+    .box-title { margin-bottom: 30px; text-transform: uppercase; font-size: 16px; font-weight: 700; color: #000; letter-spacing: 2px; }
+.box-section { border-bottom: 2px solid #e9ebef; padding-bottom: 25px; margin-bottom: 35px; }
+.box-section:last-child { border-bottom: 0px; margin-bottom: 0px; padding-bottom: 0px; }
+.box-data { position: relative; }
+.box-data label { font-size: 20px; margin-bottom: 15px; font-weight: 400; }
 
 </style>
 
@@ -118,12 +113,14 @@ h3 {
                 </ul>
                     </div><!--  For stepper-->
                     <br>
-            <div  class="myForm">
-   
+<div class="row">
+  
+<div class="col-lg-12 col-sm-8 col-md-6 mx-auto">
+                    <div class="box">
                     <form id="myForm" action="<?php echo base_url('user/user_address'); ?>" method="post" >
-                   
-                <h2 class="text-center">Add Your Delivery Address</h2>
-              
+                        <h3 class="box-title text-center">Add Your Delivery Address</h3>
+                        <div class="box-section">
+                            <div class="box-data">
                          <input name="user_id" type="hidden" value="<?php echo $this->session->userdata('user_id');  ?>" >
                         <div class="form-group">
                             <label for="street" class="control-label">House No. & Street</label>
@@ -148,24 +145,29 @@ h3 {
                                     <input id="country" name="country" type="text" class="form-control" value="">
                                 </div>
                                 <br>
-                                    <button id="payment-button" class="btn btn-lg btn-success btn-block" >
-                                <i class="fa fa-lock fa-lg"></i>&nbsp;
-                                <span id="payment-button-amount">Next Step</span>
-                            </button>
                             </div>
                             <input type="hidden" id="latitude" name="latitude" value="" />
                             <input type="hidden" id="longitude" name="longitude" value="" />
 
                         
                         </div>
-                        <div>
+                            <button id="payment-button" class="btn btn-lg btn-success btn-block" >
+                                <i class="fa fa-lock fa-lg"></i>&nbsp;
+                                <span id="payment-button-amount">Next Step</span>
+                            </button>
+                            </div>
                         </div>
-                    </form>
-                </div><!--My Form-->
+  </form>
+                    </div>
+                    </div>
+</div>
+
+
+
+  
 
           </div>
       </div>
-    </div>
     <!--End Of Row -->
 </div><!--Container-->
 <!-- Icons -->

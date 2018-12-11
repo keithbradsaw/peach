@@ -85,16 +85,13 @@ h3 {
         outline: 0;
          }
 
-.myform{
-        padding: 1rem;
-        width: 100%;
-        pointer-events: auto;
-        background-color: #F7F7F7;
-        background-clip: padding-box;
-        border: 0.5px solid rgba(0,0,0,.2);
-        border-radius: 1.1rem;
-        outline: 0;
-}
+.box { background-color: #fff; border-radius: 8px; border: 2px solid #e9ebef; padding: 50px; margin-bottom: 40px; }
+    .box-title { margin-bottom: 30px; text-transform: uppercase; font-size: 16px; font-weight: 700; color: #000; letter-spacing: 2px; }
+.box-section { border-bottom: 2px solid #e9ebef; padding-bottom: 25px; margin-bottom: 35px; }
+.box-section:last-child { border-bottom: 0px; margin-bottom: 0px; padding-bottom: 0px; }
+.box-data { position: relative; }
+.box-data label { font-size: 20px; margin-bottom: 15px; font-weight: 400; }
+
 </style>
 </head>
   <body>
@@ -120,11 +117,14 @@ h3 {
                 </ul>
                     </div><!--  For stepper-->
                     <br>
-            <div  class="myForm">
-   
-                    <form action="<?php echo base_url('user/user_payment'); ?>" method="post" >
+
+<div class="row">
+  
+<div class="col-lg-12 col-sm-8 col-md-6 mx-auto">
+                    <div class="box">
+<form action="<?php echo base_url('user/user_payment'); ?>" method="post" >
                    
-                <h2 class="text-center">Add Your Payment Details</h2>
+                <h2 class="box-title text-center">Add Your Payment Details</h2>
               
                          <input name="user_id" type="hidden" value="<?php echo $this->session->userdata('user_id');  ?>" >
                         <div class="form-group">
@@ -149,20 +149,26 @@ h3 {
                                 <div class="input-group">
                                     <input id="card_cvv" name="card_cvv" type="tel" class="form-control" value="" placeholder="3 Digit Code on Back Of card" required>
                                 </div>
-                                <button id="payment-button" type="submit" class="btn btn-lg btn-success btn-block">
+                            </div>
+                             <button id="payment-button" type="submit" class="btn btn-lg btn-success btn-block">
                                 <i class="fa fa-lock fa-lg"></i>&nbsp;
                                 <span id="payment-button-amount">Complete Signup</span>
                             </button>
-                            </div>
                         </div>
-                        <div>
-                            
-                        </div>
+
                     </form>
-                </div><!--My Form-->
+                    </div>
+                    </div>
+</div>
+
+
+
+
+
+
+
           </div>
       </div>
-    </div>
     <!--End Of Row -->
 </div><!--Container-->
 <!-- Icons -->
