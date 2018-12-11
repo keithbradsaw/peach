@@ -49,8 +49,7 @@ $this->db->from('order');
   // $this->db->select('a.order_id, a.user_id, a.total_payable, a.frequency, b.user_full_name, b.user_id, c.user_id, c.eircode');
   //  $this->db->join('user b', 'b.user_id = a.user_id', 'c.user_id = b.user_id' );
   // $this->db->where('status','Waiting for driver to collect');
-   $query = $this->db->get();
-    return $query->result_array();
+
   }
 
   public function assign_driver_to_order($driverid, $order_id){
@@ -74,6 +73,23 @@ $this->db->join('user_address', 'user_address.user_id = order.user_id');
 $this->db->from('order');
    $query = $this->db->get();
     return $query->result_array();
+  }
+
+  public function complete_orders($orderIDs){
+    foreach ($orderIDs as $order_id) {
+    $this->db->where('order_id', $order_id);
+       $status = array('status' => 'Driver Completed The Delivery'); 
+    $this->db->update('order', $status);
+    }
+    return;
+  }
+
+   public function number_available_orders(){
+$this->db->select('order_id');
+$this->db->where('status','Waiting for driver to collect');
+$this->db->from('order');
+   $query = $this->db->count_all_results();
+    return $query;
   }
 }
 ?>

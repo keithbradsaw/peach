@@ -119,6 +119,34 @@ body {
   border-color: transparent;
   box-shadow: 0 0 0 3px rgba(255, 255, 255, .25);
 }
+
+
+.box { background-color: #fff; border-radius: 8px; border: 2px solid #e9ebef; padding: 50px; margin-bottom: 40px; }
+    .box-title { margin-bottom: 30px; text-transform: uppercase; font-size: 16px; font-weight: 700; color: #094bde; letter-spacing: 2px; }
+.plan-selection { border-bottom: 2px solid #e9ebef; padding-bottom: 25px; margin-bottom: 35px; }
+.plan-selection:last-child { border-bottom: 0px; margin-bottom: 0px; padding-bottom: 0px; }
+.plan-data { position: relative; }
+.plan-data label { font-size: 20px; margin-bottom: 15px; font-weight: 400; }
+
+.plan-price { position: absolute; right: 0px; color: #094bde; font-size: 20px; font-weight: 700; letter-spacing: -1px; line-height: 1.5; bottom: 43px; }
+.term-price { bottom: 18px; }
+.summary-block { border-bottom: 2px solid #d7d9de; }
+.summary-block:last-child { border-bottom: 0px; }
+.summary-content { padding: 28px 0px; }
+.summary-price { color: #094bde; font-size: 20px; font-weight: 400; letter-spacing: -1px; margin-bottom: 0px; display: inline-block; float: right; }
+.summary-small-text { font-weight: 700; font-size: 12px; color: #8f929a; }
+.summary-text { margin-bottom: -10px; }
+.summary-title { font-weight: 700; font-size: 14px; color: #1c1e22; }
+.summary-head { display: inline-block; width: 120px; }
+
+.widget { margin-bottom: 30px; background-color: #e9ebef; padding: 50px; border-radius: 6px; }
+.widget:last-child { border-bottom: 0px; }
+.widget-title { color: #094bde; font-size: 16px; font-weight: 700; text-transform: uppercase; margin-bottom: 25px; letter-spacing: 1px; display: table; line-height: 1; }
+
+.btn { font-family: 'Noto Sans', sans-serif; font-size: 16px; text-transform: capitalize; font-weight: 700; padding: 12px 36px; border-radius: 4px; line-height: 2; letter-spacing: 0px; -webkit-transition: all 0.3s; -moz-transition: all 0.3s; transition: all 0.3s; word-wrap: break-word; white-space: normal !important; }
+.btn-default { background-color: #0943c6; color: #fff; border: 1px solid #0943c6; }
+.btn-default:hover { background-color: #063bb3; color: #fff; border: 1px solid #063bb3; }
+.btn-default.focus, .btn-default:focus { background-color: #063bb3; color: #fff; border: 1px solid #063bb3; }
   </style>
   </head>
 <body>
@@ -155,45 +183,40 @@ body {
 
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
           <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-            <h1 class="h2">Driver Account Details</h1>
+            <h1 class="h2">Driver Dashboard</h1>
 
           </div>
-           <table class="table table-bordered table-striped">
-          <tr>
-            <td>Full Name</td>
-            <td><?php echo $this->session->userdata('driver_full_name'); ?></td>
-          </tr>
-          <tr>
-            <td>Email Address</td>
-            <td><?php echo $this->session->userdata('driver_email_address');  ?></td>
-          </tr>
-          <tr>
-            <td>Age</td>
-            <td><?php echo $this->session->userdata('driver_age');  ?></td>
-          </tr>
-          <tr>
-            <td>Mobile Number</td>
-            <td><?php echo $this->session->userdata('driver_phone_number');  ?></td>
-          </tr>
 
-      </table>
       <div class="row match-height">
-    <div class="col-md-6 col-sm-12">
-      <div class="card border-secondary text-center" style="height: 313.563px;">
-        <div class="card-content">
-          <div class="card-body">
-          <br>
-          <br>
-            <h2 class="card-title">Completed Deliveries</h2>
-            <h4 class="card-title">Currently No Deliveries Completed</h4>
-            <a href="<?php echo base_url('driver/driver_profile_deliveries/');echo $driver_id; ?>">
-            <button class="btn btn-outline-success my-2">View Available Deliveries</button>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="box">
+                        <h3 class="box-title">Personal Details</h3>
+                        <div class="plan-selection">
+                            <div class="plan-data">
+                                <label for="name">Name: <?php echo $this->session->userdata('driver_full_name'); ?></label>
+                                <br>
+                              <label for="EmailAddress">Email Address: <?php echo $this->session->userdata('driver_email_address'); ?></label>
+                               <br>
+                              <label for="age">Age: <?php echo $this->session->userdata('driver_age'); ?></label>
+                               <br>
+                              <label for="cNumber">Contact Number: <?php echo $this->session->userdata('driver_phone_number'); ?></label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box">
+                        <h3 class="box-title">Available Deliveries</h3>
+                        <div class="plan-selection">
+                            <div class="plan-data">
+                                <label for="Available Deliveries">Amount of Deliveries Currently Available: <?php echo $amount_orders;?> </label>
+                                <p class="plan-text">
+                               <a href="<?php echo base_url('driver/driver_profile_deliveries/');echo $driver_id;  ?>">
+<button class="btn btn-sm btn-outline-success">View Deliveries</button>
+</a>
+                            </div>
+                        </div>
+                    </div>      
+                </div>
+</div>
         </main>
       </div>
     </div>

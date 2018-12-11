@@ -121,7 +121,31 @@ body {
   </style>
   </head>
   <body>
-
+<?php 
+$addressArr=array();
+$orderIdArray=array();
+foreach($addresses as $address){
+ //echo "User Id:".$address['user_id']."LAT:".$address['latitude']."LONG:".$address['longitude'] ;
+  $oID=array('order_id'=>$address['order_id']);
+  $myArray=array(
+    'street'=>$address['street'],
+    'county'=>$address['county'],
+    'eircode'=>$address['eircode'],
+    'lat'=>$address['latitude'],
+    'lng'=>$address['longitude'],
+    'customer'=>$address['user_full_name']
+    );
+  array_push($addressArr, $myArray);
+  array_push($orderIdArray, $oID);
+}
+  $infoForMap=json_encode($addressArr);
+ $orderids=json_encode($orderIdArray);
+  //  array_push($addressArr, $myArray);
+  //  json_encode($addressArr);
+  // $list= $addressArr;
+  // print_r($list);
+ // print_r(json_encode($addressArr));
+  ?>
     <div class="container-fluid">
       <div class="row">
         <nav class="col-md-3 d-none d-md-block sidebar">
@@ -137,15 +161,12 @@ body {
                     <div class="card-block">
                         <h4 class="card-title m-3"><?php echo $address['user_full_name']?></h4>
                         <div class="meta card-text m-3">
-                            <a><?php echo $address['street']?></a>
-                        </div>
-                        <div class="meta card-text m-3">
-                            <button class="btn btn-outline-info  btn-sm">Call Customer</button>
+                            <a>Address:<br><?php echo $address['street']?></a>
                         </div>
                     </div>
                     <div class="card-footer">
-                        <small>Delivery Frequency:<br><?php echo $address['frequency']?></small>
-                        <button class="btn btn-success float-right btn-sm">Complete Delivery</button>
+                        <a>Delivery Frequency:<br><?php echo $address['frequency']?></a>
+                        <button class="btn btn-outline-info float-right btn-sm">Call Customer</button>
                     </div>
               </div>
                 <?php } ?>
@@ -185,40 +206,20 @@ body {
 <div id="directions_panel">
   <h1 class="h2 ml-3">Route Breakdown</h1>
 </div>
+<div>
+<button onclick="compDeliveries();" class="btn btn-success float-right btn-sm">Deliveries Complete</button>
+                    </div>
 </main>
-      </div>
-    </div>
+  
 
 
 
 
-<?php 
-$addressArr=array();
-foreach($addresses as $address){
- //echo "User Id:".$address['user_id']."LAT:".$address['latitude']."LONG:".$address['longitude'] ;
-  $myArray=array(
-    'street'=>$address['street'],
-    'county'=>$address['county'],
-    'eircode'=>$address['eircode'],
-    'lat'=>$address['latitude'],
-    'lng'=>$address['longitude'],
-    'customer'=>$address['user_full_name']
-    );
-  array_push($addressArr, $myArray);
-}
-	$infoForMap=json_encode($addressArr);
- 
-
-	// 	array_push($addressArr, $myArray);
-	// 	json_encode($addressArr);
-	// $list= $addressArr;
-	// print_r($list);
- // print_r(json_encode($addressArr));
-	?>
 
 
 
 <script>
+//Map Is initialised on Load of the page
  function initMap(){
   var directionsService = new google.maps.DirectionsService;
   var directionsDisplay = new google.maps.DirectionsRenderer;
@@ -240,7 +241,7 @@ var map = new google.maps.Map(document.getElementById('map'), {
 });
  directionsDisplay.setMap(map);
  var waypts = [];
- //Loop Through and set waypoints excluding the first and last 
+ //Loop Through and set the waypoints excluding the last 
         for (var i = 0; i <= endParsed-1; i++) {
             street = parsed[i].street;
             county = parsed[i].county;
@@ -252,11 +253,9 @@ var map = new google.maps.Map(document.getElementById('map'), {
 
         }
 
-
-//console.log(waypts);
-//Destination 
+//Destination (The excluded last delivery address is set for the End destination)
 EndDest =parsed[endParsed].street+" "+parsed[endParsed].county;
-console.log(EndDest);
+//Set Origin as the location for Musgraves warehouse
     var request = {
         origin: "St. Margaret's Road, Ballymun, Dublin, D11 FN84",
        destination: EndDest,
@@ -264,13 +263,12 @@ console.log(EndDest);
           optimizeWaypoints: true,
           travelMode: 'DRIVING'
     };
-
+//Displaying th Routes to be taken by the driver and expected travel time
  directionsService.route(request, function(response, status) {
       if (status == google.maps.DirectionsStatus.OK) {
         directionsDisplay.setDirections(response);
         var route = response.routes[0];
         var summaryPanel = document.getElementById("directions_panel");
-        // summaryPanel.innerHTML = "";
         // For each route, display summary information.
         for (var i = 0; i < route.legs.length; i++) {
           var routeSegment = i + 1;
@@ -284,155 +282,28 @@ console.log(EndDest);
       }
     });
   
+}//End of init map
 
- // var waypts = [];
- // //Loop Through and set waypoints excluding the first and last 
- //        for (var i = 1; i < (endParsed-1); i++) {
- //           var lat = parsed[i].lat;
- //           var lng = parsed[i].lng;
- //            waypts.push({
- //              position: {lat: parseFloat(lat), lng: parseFloat(lng)},
- //              stopover: true
- //            });
+//Order ID's for each selected order- Used for updating the order status in the Database
 
- //        }
+function compDeliveries(){
+  var orderNums= '<?php echo $orderids;?>';
+var parseID= JSON.parse(orderNums);
+        $.ajax({
+                url : "<?php echo base_url('driver/driver_complete_deliveries') ?>",
+                type : "POST",
+            data: {"orderInfo": parseID},
+            success: function(result){
+            //alert(result);
+            window.location.href="<?php echo site_url('driver/driver_profile');?>";
 
-// directionsService.route({
-//           origin: document.getElementById('start').value,
-//           destination: document.getElementById('end').value,
-//           waypoints: waypts,
-//           optimizeWaypoints: true,
-//           travelMode: 'DRIVING'
-//         }, function(response, status) {
-//           if (status === 'OK') {
-//             directionsDisplay.setDirections(response);
-//             var route = response.routes[0];
-//           }else{
-//             window.alert('Directions request failed due to ' + status);
-//           }
-//         });
-
-
-//Loop For Markers and display the distinct locations
-
-// for (var i = 0; i < parsedLength; i++) {
-//   var lat = parsed[i].lat;
-//   var lng = parsed[i].lng;
-//   var name = parsed[i].customer;
-//   console.log(i, lat, lng);
-
-//   var marker = new google.maps.Marker({
-//     map: map,
-//     position: {
-//       lat: parseFloat(lat),
-//       lng: parseFloat(lng)
-//     },
-//     title: name
-//   });
-// };
-
- // Check content
-    //     if(props.content){
-    //       var infoWindow = new google.maps.InfoWindow({
-    //         content:props.content
-    //       });
-
-
-   // var locations = [];
- // locations.push
-// Map options
-      // var options = {
-      //   zoom:8,
-      //   center:{lat:53.3440,lng:-6.2672}
-      // }
-
-      // // New map
-      // var map = new google.maps.Map(document.getElementById('map'), options);
-
-      // // Listen for click on map
-      // google.maps.event.addListener(map, 'click', function(event){
-      //   // Add marker
-      //   addMarker({coords:event.latLng});
-      // });
-
-      /*
-      // Add marker
-      var marker = new google.maps.Marker({
-        position:{lat:42.4668,lng:-70.9495},
-        map:map,
-        icon:'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'
-      });
-
-      var infoWindow = new google.maps.InfoWindow({
-        content:'<h1>Lynn MA</h1>'
-      });
-
-      marker.addListener('click', function(){
-        infoWindow.open(map, marker);
-      });
-      */
-
-      // Array of markers
-
-// for (var i = 0; i < parsedLength; i++) {
-//   var lat = parsed[i].lat;
-//   var lng = parsed[i].lng;
-
-//   console.log(i, lat, lng);
-//   var marker = new google.maps.Marker({
-//     map: map,
-//     position: {
-//       lat: lat,
-//       lng: lng
-//     },
-//     title: 'Hello World!'
-//   });
-// };
-//       //For each address let coords = the geolocation and the content= persons name
-      
-      // var markers = [
-      //   {
-      //     coords:{lat:parsed[x]['lat'],lng:parsed[x]['lng']]},
-      //     content:'<h1>Amesbury MA</h1>'
-      //   }
-      // ];
-
-      // // Loop through markers
-      // for(var i = 0;i < markers.length;i++){
-      //   // Add marker
-      //   addMarker(markers[i]);
-      // }
-
-      // // Add Marker Function
-      // function addMarker(props){
-      //   var marker = new google.maps.Marker({
-      //     position:props.coords,
-      //     map:map,
-      //     //icon:props.iconImage
-      //   });
-
-        // Check for customicon
-    //     if(props.iconImage){
-    //       // Set icon image
-    //       marker.setIcon(props.iconImage);
-    //     }
-
-    //     // Check content
-    //     if(props.content){
-    //       var infoWindow = new google.maps.InfoWindow({
-    //         content:props.content
-    //       });
-
-    //       marker.addListener('click', function(){
-    //         infoWindow.open(map, marker);
-    //       });
-    //     }
-    //   }
-    // }
+            } ,error: function(xhr, status, error) {
+              alert(status);
+            },
+          });
 }
-  </script>
+</script>
   <!-- Script Used For Maps-->
-<!--  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA9CZH-s3lLoi-aFiWykonbIlRx1HfItWM&callback=initMap"></script> -->
  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA9CZH-s3lLoi-aFiWykonbIlRx1HfItWM&libraries=places&callback=initMap"
         async defer></script> 
   </body>

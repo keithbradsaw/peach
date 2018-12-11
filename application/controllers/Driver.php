@@ -80,8 +80,9 @@ public function login_driver(){
 
 
 public function driver_profile(){
+  $data['amount_orders']=$this->driver_model->number_available_orders();
     $this->load->view('templates/header');
-    $this->load->view("driver/driver_profile.php");
+    $this->load->view("driver/driver_profile.php",$data);
     $this->load->view('templates/footer');
 
 }
@@ -109,6 +110,18 @@ $driver_id=$this->session->userdata('driver_id');
     $this->load->view('templates/footer');
 //print_r($data);
 }
+
+public function driver_complete_deliveries(){
+$driver_id=$this->session->userdata('driver_id');
+ $orderInfo= $this->input->post('orderInfo');
+ $orderIDs=array();
+foreach ($orderInfo as $orderValue) {
+  array_push($orderIDs, $orderValue['order_id']);
+}
+$this->driver_model->complete_orders($orderIDs);
+
+}
+
 
 public function driver_logout(){
 
