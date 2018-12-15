@@ -25,40 +25,40 @@
                     </div>
     <div class="row">
             <div class="col-md-3"  style="padding-top: 35px;">
-        <div class="card"><!-- <img class="img-fluid" src="http://grafreez.com/wp-content/temp_demos/river/img/travel.jpg" alt=""> -->
+        <div class="card" style="height: 100px;">
                 <div class="card-img-overlay"> <span class="badge badge-pill badge-danger">Step1.</span> </div>
                 <div class="card-body">
             <div class="news-title">
-                    <h2 class=" title-small"><a>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed placerat lobortis augue in finibus. Praesent interdum, turpis eget dignissim elementum, mi leo venenatis velit, a suscipit libero erat vitae arcu.</a></h2>
+                    <h2 class=" title-small"><a>Register as a Delivery Driver with the requested information.</a></h2>
                   </div>
             
           </div>
               </div>
-        <div class="card"> <!-- <img class="img-fluid" src="http://grafreez.com/wp-content/temp_demos/river/img/travel.jpg" alt=""> -->
-                <div class="card-img-overlay"> <span class="badge badge-pill badge-danger">Step2.</span> </div>
+        <div class="card" style="height: 100px;"> 
+                <div class="card-img-overlay"> <span class="badge badge-pill badge-danger">Step3.</span> </div>
                 <div class="card-body">
             <div class="news-title">
-                    <h2 class=" title-small"><a>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed placerat lobortis augue in finibus. Praesent interdum, turpis eget dignissim elementum, mi leo venenatis velit, a suscipit libero erat vitae arcu.</a></h2>
+                    <h2 class=" title-small"><a>Deliver the products using the inbuilt Map System</a></h2>
                   </div>
            
           </div>
               </div>
       </div>
             <div class="col-md-3"  style="padding-top: 35px;">
-        <div class="card"> <!-- <img class="img-fluid" src="http://grafreez.com/wp-content/temp_demos/river/img/business1.jpg" alt=""> -->
-                <div class="card-img-overlay"> <span class="badge badge-pill badge-danger">Step3.</span> </div>
+        <div class="card" style="height: 100px;">
+                <div class="card-img-overlay"> <span class="badge badge-pill badge-danger">Step2.</span> </div>
                 <div class="card-body">
             <div class="news-title">
-                    <h2 class=" title-small"><a>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed placerat lobortis augue in finibus. Praesent interdum, turpis eget dignissim elementum, mi leo venenatis velit, a suscipit libero erat vitae arcu.</a></h2>
+                    <h2 class=" title-small"><a>Choose What deliveries you want to do, and how many!</a></h2>
                   </div>
             
           </div>
               </div>
-        <div class="card"> <!-- <img class="img-fluid" src="http://grafreez.com/wp-content/temp_demos/river/img/food.jpg" alt=""> -->
+        <div class="card" style="height: 100px;">
                 <div class="card-img-overlay"> <span class="badge badge-pill badge-danger">Step4.</span> </div>
                 <div class="card-body">
             <div class="news-title">
-                    <h2 class=" title-small"><a>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed placerat lobortis augue in finibus. Praesent interdum, turpis eget dignissim elementum, mi leo venenatis velit, a suscipit libero erat vitae arcu.</a></h2>
+                    <h2 class=" title-small"><a>Earn a percentage of the delivery price!</a></h2>
                   </div>
             
           </div>

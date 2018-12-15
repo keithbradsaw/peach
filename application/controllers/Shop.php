@@ -8,6 +8,7 @@ public function __construct(){
   	$this->load->helper('url');
   	$this->load->model('shop_model');
         $this->load->library('session');
+         $this->load->helper('html');
  
 }
 	public function shop_index(){
@@ -70,7 +71,7 @@ public function __construct(){
   return $this->shop_model-> Get_related_by_id($product_category_id);
 
   }
-
+//Displaying Shop Cart
   public function shop_cart($user_id){
     $user_id = $this->uri->segment(3);
 $cartDetails=$this->shop_model->retrieve_amount_from_cart($user_id);
@@ -109,6 +110,10 @@ $data['productList'] = $main;
     );
   $user_id = $item['user_id'];
 $this->shop_model->input_product_to_cart($product);
+
+
+
+
 //Then select products from the cart table and set as session items
 $retrieved=$this->shop_model->retrieve_amount_from_cart($user_id);
 $i = 0;
@@ -163,15 +168,15 @@ public function shop_complete_order(){
    $frequency=$this->uri->segment(3);
 //Didnt want to send total prce across in url so basing it from the cost of groceries + delivery
    if($frequency =="every_week"){
-    $total_payable= $groceryCost + 12;
+    $total_payable= $groceryCost + 30;
    }elseif($frequency =="every_two_weeks"){
-      $total_payable= $groceryCost + 20;
+      $total_payable= $groceryCost + 15;
      
    }elseif($frequency =="every_three_weeks"){
-      $total_payable= $groceryCost + 28;
+      $total_payable= $groceryCost + 12;
       
    }elseif($frequency == "every_four_weeks"){
-      $total_payable = $groceryCost + 35;
+      $total_payable = $groceryCost + 10;
    }
 
    $user_id=$this->session->userdata('user_id');

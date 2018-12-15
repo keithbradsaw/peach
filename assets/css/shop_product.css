@@ -1,0 +1,33 @@
+ul {
+	list-style-type: none;
+}
+
+a {
+	color: #90A4AE;
+	text-decoration: none;
+}
+
+
+
+h1 a {
+ 	font-size: 16px;
+ }
+
+ .accordion {
+ 	width: 100%;
+ 	max-width: 360px;
+ 	margin: 30px auto 20px;
+ 	background: #FFF;
+ 	-webkit-border-radius: 4px;
+ 	-moz-border-radius: 4px;
+ 	border-radius: 4px;
+ }
+
+.suggested{
+	padding-top:160px; 
+}
+
+.thumbnail{
+    height:200px;
+    width:100%;
+}

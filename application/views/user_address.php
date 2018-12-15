@@ -1,98 +1,5 @@
-<style type="text/css">
-body{
- background:#dae3e4;
-}
-.steps ul {
-  justify-content: space-between;
-  -moz-justify-content: space-between;
-  -webkit-justify-content: space-between;
-  -o-justify-content: space-between;
-  -ms-justify-content: space-between; }
-  .steps ul li {
-    width: 330px; }
-    .steps ul li a {
-      text-decoration: none;
-      display: block;
-      background: #f8f8f8;
-      text-align: center;
-      padding: 8px 0; }
-    .steps ul li:hover a {
-      background: #1ed760; }
-      .steps ul li:hover a h3 {
-        color: #fff; }
-  .steps ul .current a {
-    background: #1ed760; }
-    .steps ul .current a h3 {
-      color: #fff; }
-
-display-flex, .select-icon, .select-icon i, .form-radio input + label figure, .form-flex, .steps ul, .actions ul li a, .form-row {
-  display: flex;
-  display: -webkit-flex; }
-
-/* @extend list-type-ulli; */
-list-type-ulli, .steps ul, .actions ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0; }
-
-
-
-h3 {
-  font-size: 18px;
-  color: #999999;
-  cursor: pointer; }
-
-
-
-
-
-.steps ul {
-  justify-content: space-between;
-  -moz-justify-content: space-between;
-  -webkit-justify-content: space-between;
-  -o-justify-content: space-between;
-  -ms-justify-content: space-between;
-
-
-   }
-  .steps ul li {
-    width: 330px; }
-    .steps ul li a {
-      text-decoration: none;
-      display: block;
-      background: #fff;
-      text-align: center;
-      padding: 10px 0; }
-    .steps ul li:hover a {
-      background: #28a745; }
-      .steps ul li:hover a h3 {
-        color: #fff; }
-  .steps ul .current a {
-    background: #28a745; }
-    .steps ul .current a h3 {
-      color: #fff; }
-
-  .steps ul li {
-    width: 100%; }
-.stepper{
-        
-        width: 100%;
-        pointer-events: auto;
-        background-color: #dae3e4;
-        background-clip: padding-box;
-        border: 0.5px solid rgba(0,0,0,.2);
-        border-radius: 1.1rem;
-        outline: 0;
-         }
-.box { background-color: #fff; border-radius: 8px; border: 2px solid #e9ebef; padding: 50px; margin-bottom: 40px; }
-    .box-title { margin-bottom: 30px; text-transform: uppercase; font-size: 16px; font-weight: 700; color: #000; letter-spacing: 2px; }
-.box-section { border-bottom: 2px solid #e9ebef; padding-bottom: 25px; margin-bottom: 35px; }
-.box-section:last-child { border-bottom: 0px; margin-bottom: 0px; padding-bottom: 0px; }
-.box-data { position: relative; }
-.box-data label { font-size: 20px; margin-bottom: 15px; font-weight: 400; }
-
-</style>
-
+<?php echo link_tag('/assets/css/user_steps.css'); ?>
+<!--Used In combination with the GeoCoding API -->
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
   <body>
@@ -152,7 +59,6 @@ h3 {
                         
                         </div>
                             <button id="payment-button" class="btn btn-lg btn-success btn-block" >
-                                <i class="fa fa-lock fa-lg"></i>&nbsp;
                                 <span id="payment-button-amount">Next Step</span>
                             </button>
                             </div>
@@ -177,8 +83,8 @@ h3 {
     </script>
 <script>
 //First we get the eircode Value
-//THen Assign the geo Locations
-//THen Submit Form
+//Then Assign the geo Locations
+//Then Submit Form
 $('#myForm').submit(function(e){
     e.preventDefault();
     var eircode = document.getElementById("eircode").value; 
@@ -186,19 +92,6 @@ var location=eircode+"+ire";
 geocode(location);
 
   });
-
-// function eircodeToGeo(){
-// var eircode = document.getElementById("eircode").value; 
-// var location=eircode+"+ire";
-// geocode(location);
-
-// }
-
-
-
-  
-
-
 
 
   function geocode(location){

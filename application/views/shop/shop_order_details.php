@@ -1,31 +1,4 @@
-<style type="text/css">
-    .box { background-color: #fff; border-radius: 8px; border: 2px solid #e9ebef; padding: 50px; margin-bottom: 40px; }
-    .box-title { margin-bottom: 30px; text-transform: uppercase; font-size: 16px; font-weight: 700; color: #094bde; letter-spacing: 2px; }
-.plan-selection { border-bottom: 2px solid #e9ebef; padding-bottom: 25px; margin-bottom: 35px; }
-.plan-selection:last-child { border-bottom: 0px; margin-bottom: 0px; padding-bottom: 0px; }
-.plan-data { position: relative; }
-.plan-data label { font-size: 20px; margin-bottom: 15px; font-weight: 400; }
-.plan-text { padding-left: 35px; }
-.plan-price { position: absolute; right: 0px; color: #094bde; font-size: 20px; font-weight: 700; letter-spacing: -1px; line-height: 1.5; bottom: 43px; }
-.term-price { bottom: 18px; }
-.summary-block { border-bottom: 2px solid #d7d9de; }
-.summary-block:last-child { border-bottom: 0px; }
-.summary-content { padding: 28px 0px; }
-.summary-price { color: #094bde; font-size: 20px; font-weight: 400; letter-spacing: -1px; margin-bottom: 0px; display: inline-block; float: right; }
-.summary-small-text { font-weight: 700; font-size: 12px; color: #8f929a; }
-.summary-text { margin-bottom: -10px; }
-.summary-title { font-weight: 700; font-size: 14px; color: #1c1e22; }
-.summary-head { display: inline-block; width: 120px; }
-
-.widget { margin-bottom: 30px; background-color: #e9ebef; padding: 50px; border-radius: 6px; }
-.widget:last-child { border-bottom: 0px; }
-.widget-title { color: #094bde; font-size: 16px; font-weight: 700; text-transform: uppercase; margin-bottom: 25px; letter-spacing: 1px; display: table; line-height: 1; }
-
-.btn { font-family: 'Noto Sans', sans-serif; font-size: 16px; text-transform: capitalize; font-weight: 700; padding: 12px 36px; border-radius: 4px; line-height: 2; letter-spacing: 0px; -webkit-transition: all 0.3s; -moz-transition: all 0.3s; transition: all 0.3s; word-wrap: break-word; white-space: normal !important; }
-.btn-default { background-color: #0943c6; color: #fff; border: 1px solid #0943c6; }
-.btn-default:hover { background-color: #063bb3; color: #fff; border: 1px solid #063bb3; }
-.btn-default.focus, .btn-default:focus { background-color: #063bb3; color: #fff; border: 1px solid #063bb3; }
-</style>
+<?php echo link_tag('/assets/css/order_details.css'); ?>
  <script
   src="https://code.jquery.com/jquery-3.3.1.min.js"
   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
@@ -69,21 +42,21 @@ if(!$user_id){
                 <div class="col-lg-8 col-md-8 col-sm-7 col-xs-12">
                     <div class="box">
                         <h3 class="box-title">Your Groceries</h3>
-                        <div class="plan-selection">
-                            <div class="plan-data">
-                                <label for="question1">Groceries</label>
-                                <p class="plan-text">
+                        <div class="box-section">
+                            <div class="box-data">
+                                <label for="Groceries">Groceries</label>
+                                <p class="box-text">
                                  Amount of items: <?php echo $Total_Items ?></p>
-                                <span class="plan-price">€<?php echo $Total_Grocery_Cost ?><span>
+                                <span class="box-price">€<?php echo $Total_Grocery_Cost ?><span>
                             </div>
                         </div>
                     </div>
                     <div class="box">
                         <h3 class="box-title">Delivery Frequency</h3>
-                        <div class="plan-selection">
-                            <div class="plan-data">
+                        <div class="box-selection">
+                            <div class="box-data">
                                 <label for="question1">Choose How Often you Want a delivery</label>
-                                <p class="plan-text">
+                                <p class="box-text">
                                 <select id="delivery_freq" name="delivery_freq">
                                     <option value="every_week">Each Week</option>
                                     <option value="every_two_weeks">Every Two Weeks</option>
@@ -113,7 +86,7 @@ if(!$user_id){
                                 
                                 </div>
                                 <div class="summary-price">
-                                    <p class="summary-text">€<span id="deliveryP">12</span></p>
+                                    <p class="summary-text">€<span id="deliveryP">30</span></p>
                                     
                                 </div>
                             </div>
@@ -136,7 +109,7 @@ if(!$user_id){
 </div>
 <script>
 $('document').ready(function() {
- deliveryP = 12;
+ deliveryP = 30;
         $("#deliveryP").text(deliveryP);
         groceriesP=parseFloat(document.getElementById("groceriesP").textContent);
         var totalP=groceriesP+deliveryP;
@@ -147,7 +120,7 @@ $('select').on('change', function() {
 
      if($('#delivery_freq').val() == "every_week") 
     {
-        deliveryP = 12;
+        var deliveryP = 30;
         $("#deliveryP").text(deliveryP);
         groceriesP=parseFloat(document.getElementById("groceriesP").textContent);
         var totalP=groceriesP+deliveryP;
@@ -156,7 +129,7 @@ $('select').on('change', function() {
     }
     else if ($('#delivery_freq').val() == "every_two_weeks") 
     {
-        deliveryP = 20;
+       var deliveryP = 15;
          $("#deliveryP").text(deliveryP);
         groceriesP=parseFloat(document.getElementById("groceriesP").textContent);
         var totalP=groceriesP+deliveryP;
@@ -165,7 +138,7 @@ $('select').on('change', function() {
     }
     else if ($('#delivery_freq').val() == "every_three_weeks") 
     {
-        deliveryP = 28;
+       var deliveryP = 12;
          $("#deliveryP").text(deliveryP);
         groceriesP=parseFloat(document.getElementById("groceriesP").textContent);
         var totalP=groceriesP+deliveryP;
@@ -175,7 +148,7 @@ $('select').on('change', function() {
     }
     else if ($('#delivery_freq').val() == "every_four_weeks") 
     {
-        deliveryP = 35;
+       var deliveryP = 10;
          $("#deliveryP").text(deliveryP);
         groceriesP=parseFloat(document.getElementById("groceriesP").textContent);
     var totalP=groceriesP+deliveryP;

@@ -1,39 +1,4 @@
-<style type="text/css">
-
-ul {
-	list-style-type: none;
-}
-
-a {
-	color: #90A4AE;
-	text-decoration: none;
-}
-
-
-
-h1 a {
- 	font-size: 16px;
- }
-
- .accordion {
- 	width: 100%;
- 	max-width: 360px;
- 	margin: 30px auto 20px;
- 	background: #FFF;
- 	-webkit-border-radius: 4px;
- 	-moz-border-radius: 4px;
- 	border-radius: 4px;
- }
-
-.suggested{
-	padding-top:160px; 
-}
-
-.thumbnail{
-    height:200px;
-    width:100%;
-}
-</style>
+<?php echo link_tag('/assets/css/shop_product.css'); ?>
 <?php $user_id=$this->session->userdata('user_id');?>
  <header>
 
@@ -162,7 +127,6 @@ h1 a {
 			var price = document.getElementById("price").textContent;
 			var qty = $('#qty').val();
 			var total_price = qty*price;
-			//alert(price+ " "+qty + " "+total_price+ "product_id:"+product_id+"user_id"+user_id);
 			
 			var dataString = { 
 			user_id  : user_id,
@@ -179,7 +143,7 @@ h1 a {
 				        type : "POST",
 						data: {"cart_item": dataString},
 						success: function(result){
-						//alert(result);
+						alert("New Item Added To Cart!");
 				  	//window.location.href="<?php echo site_url('shop/addto_shop_cart');?>";
 
 						} ,error: function(xhr, status, error) {

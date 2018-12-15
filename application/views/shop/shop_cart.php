@@ -80,11 +80,6 @@ $pValue = $products['product_price']*$products['product_quantity'];
 $total+=$pValue;
 $i++; } ?>
 
- <!--                <div class="float-right">
-                    <a href="" class="btn btn-outline-secondary pull-right">
-                        Update shopping cart
-                    </a>
-                </div> -->
             </div>
             <div class="card-footer">
                 <div class="float-right">

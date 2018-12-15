@@ -67,7 +67,7 @@ public function login_user(){
 
       if($data)
       {
-        //First paramater is the key second is the data from source
+        //First paramater is the key second in the data from source
         $this->session->set_userdata('user_id',$data['user_id']);
         $this->session->set_userdata('user_full_name',$data['user_full_name']);
         $this->session->set_userdata('user_age',$data['user_age']);
@@ -144,6 +144,7 @@ redirect('user/user_profile');
 
 //Last page to load after registraton steps are done
 function user_profile(){
+      $this->load->view('templates/header');
     $this->load->view("user_profile.php");
     $this->load->view('templates/footer');
 

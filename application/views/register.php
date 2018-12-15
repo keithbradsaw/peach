@@ -26,7 +26,7 @@
                     </div>
     <div class="row">
             <div class="col-md-3"  style="padding-top: 35px;">
-        <div class="card"><!-- <img class="img-fluid" src="http://grafreez.com/wp-content/temp_demos/river/img/travel.jpg" alt=""> -->
+        <div class="card" style="height: 110px;">
                 <div class="card-img-overlay"> <span class="badge badge-pill badge-danger">Step1.</span> </div>
                 <div class="card-body">
             <div class="news-title">
@@ -35,7 +35,7 @@
             
           </div>
               </div>
-        <div class="card"> <!-- <img class="img-fluid" src="http://grafreez.com/wp-content/temp_demos/river/img/travel.jpg" alt=""> -->
+        <div class="card" style="height: 110px;"> 
                 <div class="card-img-overlay"> <span class="badge badge-pill badge-danger">Step3.</span> </div>
                 <div class="card-body">
             <div class="news-title">
@@ -46,7 +46,7 @@
               </div>
       </div>
             <div class="col-md-3"  style="padding-top: 35px;">
-        <div class="card"> <!-- <img class="img-fluid" src="http://grafreez.com/wp-content/temp_demos/river/img/business1.jpg" alt=""> -->
+        <div class="card" style="height: 110px;"> 
                 <div class="card-img-overlay"> <span class="badge badge-pill badge-danger">Step2.</span> </div>
                 <div class="card-body">
             <div class="news-title">
@@ -55,11 +55,11 @@
             
           </div>
               </div>
-        <div class="card"> <!-- <img class="img-fluid" src="http://grafreez.com/wp-content/temp_demos/river/img/food.jpg" alt=""> -->
+        <div class="card" style="height: 110px;"> 
                 <div class="card-img-overlay"> <span class="badge badge-pill badge-danger">Step4.</span> </div>
                 <div class="card-body">
             <div class="news-title">
-                    <h2 class=" title-small"><a>Sit back and your groceries will arrive soon, whether its a once off delivery or multiple this month.</a></h2>
+                    <h2 class=" title-small"><a>Sit back and your groceries will arrive soon!</a></h2>
                   </div>
             
           </div>

@@ -1,11 +1,16 @@
-  <style type="text/css">
-:root {
-  --jumbotron-padding-y: 3rem;
-}
-.album{
-background-color: #9e9e9e0f;
+<?php
+$user_id=$this->session->userdata('user_id');
+
+if(!$user_id){
+
+  redirect('user/login_view');
 }
 
+ ?>
+
+ <!--Shop CSS-->
+  
+    <style type="text/css">
 .jumbotron {
 background: url(<?php echo base_url('../../assets/images/christmas.jpg') ?>) no-repeat center center;
 padding: 30px 15px;
@@ -16,69 +21,9 @@ padding: 30px 15px;
   background-size: cover;
 
 }
-@media (min-width: 768px) {
-  .jumbotron {
-    padding-top: calc(var(--jumbotron-padding-y) * 2);
-    padding-bottom: calc(var(--jumbotron-padding-y) * 2);
-  }
-}
+    </style>
+    <?php echo link_tag('/assets/css/shop_index.css'); ?>
 
-.jumbotron p:last-child {
-  margin-bottom: 0;
-}
-
-.jumbotron-heading {
-  font-weight: 600;
-  color: #fff;
-  text-shadow: 0 1px 0 black;
-}
-
-.jumbotron .container {
-  max-width: 40rem;
-}
-
-footer {
-  padding-top: 3rem;
-  padding-bottom: 3rem;
-}
-
-footer p {
-  margin-bottom: .25rem;
-}
-/*
-.card-img-top{
-background-color: #424242;
-padding: 50px;
-}
-.card-img-top h5{
-  color: #fff;
-}
-
-*/
-.feather {
-  width: 20px;
-  height: 20px;
-
-}
-.card{
-  margin-bottom: 1.875rem;
-  border-radius: 0;
-  box-shadow: 0 10px 40px 0 rgba(62, 57, 107, 0.07), 0 2px 9px 0 rgba(62, 57, 107, 0.06);
-}
-h2{
-  text-shadow: 0 1px 0 black;
-}
-}
-  </style>
-  <?php
-$user_id=$this->session->userdata('user_id');
-
-if(!$user_id){
-
-  redirect('user/login_view');
-}
-
- ?>
   <body>
     <header>
 
@@ -210,120 +155,6 @@ if(!$user_id){
       </div>
     </div>
   </div>
-  <!-- End of Row -->
- <!--          <div class="row">
-            <div class="col-md-4">
-              <div class="card mb-4 shadow-sm">
-                <span class="card-img-top">
-                     <h5 class="flex-d text-center">Fresh Food</h5>
-                </span>
-                <div class="card-body">
-                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group">
-
-                    <a href="<?php //echo base_url('shop/shop_category_items/'); ?>2">
-                      <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                      </a>
-                    </div>
-                    
-                  </div>
-                </div>
-              </div>
-            </div> --><!--End ofcol4-->
-            <!-- <div class="col-md-4">
-              <div class="card mb-4 shadow-sm">
-                <span class="card-img-top">
-                     <h5 class="flex-d text-center">Frozen Goods</h5>
-                </span>
-                <div class="card-body">
-                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group">
-                    <a href="<?php //echo base_url('shop/shop_category_items/'); ?>1">
-                      <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                      </a>
-                    </div>
-                     <small class="text-muted">9 mins</small>
-                  </div>
-                </div>
-              </div>
-            </div> --><!--End ofcol4-->
-          <!--   <div class="col-md-4">
-              <div class="card mb-4 shadow-sm">
-                <span class="card-img-top">
-                     <h5 class="flex-d text-center">Food Cupboard</h5>
-                </span>
-                <div class="card-body">
-                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group">
-                    <a href="<?php //echo base_url('shop/shop_category_items/'); ?>3">
-                      <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                      </a>
-                    </div>
-                    
-                  </div>
-                </div>
-              </div>
-            </div> --><!--End ofcol4-->
-<!-- 
-            <div class="col-md-4">
-              <div class="card mb-4 shadow-sm">
-                <span class="card-img-top">
-                     <h5 class="flex-d text-center">Drinks</h5>
-                </span>
-                <div class="card-body">
-                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                  <div class="d-flex justify-content-between align-items-center">
-                                        <div class="btn-group">
-                    <a href="<?php// echo base_url('shop/shop_category_items/'); ?>4">
-                      <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                      </a>
-                    </div>
-                    
-                  </div>
-                </div>
-              </div>
-            </div> --><!--End ofcol4-->
-            <!-- <div class="col-md-4">
-              <div class="card mb-4 shadow-sm">
-                <span class="card-img-top">
-                     <h5 class="flex-d text-center">Household Goods</h5>
-                </span>
-                <div class="card-body">
-                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group">
-                     <a href="<?php //echo base_url('shop/shop_category_items/'); ?>5">
-                      <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                      </a>
-                    </div>
-                   
-                  </div>
-                </div>
-              </div>
-            </div> --><!--End ofcol4-->
-            <!-- <div class="col-md-4">
-              <div class="card mb-4 shadow-sm">
-                <span class="card-img-top">
-                     <h5 class="flex-d text-center">Health &amp; Beauty</h5>
-                </span>
-                <div class="card-body">
-                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group">
-                      <a href="<?php// echo base_url('shop/shop_category_items/'); ?>6">
-                      <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                      </a>
-                    </div>
-                   
-                  </div>
-                </div>
-              </div>
-            </div> --><!--End ofcol4
-
-            </div> --><!-- end of row -->
             
         <h2 class="text-center" style="color: #212529;">Christmas Offers  <span data-feather="gift"></span>
 </h2>
@@ -350,10 +181,10 @@ if(!$user_id){
         <div class="card-content">
           <div class="card-body">
           <br>
-            <img src="<?php echo base_url('../../assets/images/mince-pies.png') ?>" alt="element 02" width="225" class="mb-1">
+            <img src="<?php echo base_url('../../assets/images/mince_pies_image.png') ?>" alt="element 02" width="225" class="mb-1">
             <h3 class="card-title">6 Mince Pies</h3>
             <p class="card-text">Price: €2.85</p>
-            <a href="<?php echo base_url('shop/shop_category_items/'); ?>6">
+            <a href="<?php echo base_url('shop/Get_product_by_id/')."24/7"?>">
             <button class="btn btn-outline-success my-2">View Product</button>
             </a>
           </div>
@@ -362,62 +193,6 @@ if(!$user_id){
     </div>
   </div>
   </div>
- <!--       <div class="row">
-             <div class="col-md-4">
-              <div class="card mb-4 shadow-sm">
-                <span class="card-img-top">
-                     <h5 class="flex-d text-center">Ben And Jerry's Peanut Butter Cup</h5>
-                </span>
-                <div class="card-body">
-                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group">
-                    <a href="<?php// echo base_url('shop/Get_product_by_id/5/1'); ?>">
-                      <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                      </a>
-                    </div>
-                    
-                  </div>
-                </div>
-              </div>
-            </div> --><!--End ofcol4-->
-                       <!--  <div class="col-md-4">
-              <div class="card mb-4 shadow-sm">
-                <span class="card-img-top">
-                     <h5 class="flex-d text-center">Birds Eye Steam Fresh Broccoli Green Beans And Sweetcorn </h5>
-                </span>
-                <div class="card-body">
-                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group">
-                    <a href="<?php// echo base_url('shop/Get_product_by_id/6/1'); ?>">
-                      <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                      </a>
-                    </div>
-      
-                  </div>
-                </div>
-              </div>
-            </div> --><!--End ofcol4-->
-            <!-- <div class="col-md-4">
-              <div class="card mb-4 shadow-sm">
-                <span class="card-img-top">
-                     <h5 class="flex-d text-center">Frozen Goods</h5>
-                </span>
-                <div class="card-body">
-                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group">
-                      <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                    </div>
-                   
-                  </div>
-                </div>
-              </div>
-            </div> --><!--End ofcol4
-
-</div>-->
-
           </div>
         </div>
       </div>
